@@ -4,7 +4,7 @@
 
 **Convierte tu agente en un asesor de desarrollo profesional que conecte tu experiencia, las acciones de hoy y tus próximos rumbos.**
 
-![Ejemplo ficticio de conversación y registros profesionales de LüJi](assets/readme-preview.jpg)
+![LüJi: ilustración conceptual de un agente que conecta la experiencia pasada, las acciones presentes y los rumbos futuros](assets/readme-overview.png)
 
 ```text
 Instala lvji-career-kit desde https://github.com/siliviasilivia85-lang/lvji-career-kit y ayúdame a ordenar una experiencia.
@@ -118,7 +118,7 @@ Los flujos detallados están en [currículums](references/resume.md) y [entrevis
 
 ## Explora la demostración ficticia
 
-La captura muestra una conversación identificada como ficticia. La demo conecta experiencia, exploración de rumbos, acciones posibles y aprendizaje guardado; los planes, las oportunidades y los currículums muestran los resultados. La web no ejecuta un agente en línea ni guarda datos de visitantes.
+Las conversaciones de la demo local están identificadas claramente como ejemplos ficticios. La demo conecta experiencia, exploración de rumbos, acciones posibles y aprendizaje guardado; los planes, las oportunidades y los currículums muestran los resultados. La web no ejecuta un agente en línea ni guarda datos de visitantes.
 
 Quien mantenga el proyecto puede generar un sitio estático:
 

@@ -4,7 +4,7 @@
 
 **Make your Agent a personal career adviser, connecting past experience, today’s actions and future directions.**
 
-![Fictional LüJi conversation and career records](assets/readme-preview.jpg)
+![LüJi: a concept illustration of an Agent connecting past experience, present actions and future directions](assets/readme-overview.png)
 
 ```text
 Install lvji-career-kit from https://github.com/siliviasilivia85-lang/lvji-career-kit and help me make sense of one past experience.
@@ -100,7 +100,7 @@ Detailed workflows: [résumés](references/resume.md) · [interviews](references
 
 ## Explore the fictional demo
 
-The screenshot shows a clearly labeled fictional conversation. The demo connects experience, direction, manageable actions, and saved learning, then opens plans, opportunities, and résumés as results. The web demo does not run an online Agent or save visitor data.
+The conversations in the local demo are clearly labeled as fictional examples. The demo connects experience, direction, manageable actions, and saved learning, then opens plans, opportunities, and résumés as results. The web demo does not run an online Agent or save visitor data.
 
 Maintainers can generate a portable static site:
 

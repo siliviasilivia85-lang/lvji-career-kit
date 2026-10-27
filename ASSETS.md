@@ -25,6 +25,6 @@ Python只使用标准库。页面无远程字体或CDN，样式画廊使用下�
 
 - 五语言README为项目自写说明的译文，沿用MIT。未翻译并冒称已实现的功能，运行时指南仍仅支持中文/英文。
 - `scripts/demo_site.py`、`assets/demo_intro.html`与配套测试为原创。它们只从固定虚构输入生成只读站点；不调用模型、账户或个人工作区。页面、头像和简历均由自有代码/上述生成头像派生，不复制真实Agent界面、个人聊天或外部项目截图。
-- `assets/readme-preview.jpg`为上述虚构演示的本地浏览器截图，供README说明使用流程；不代表在线Agent或真人经历，没有摄入个人工作区、账号信息和通知。
+- `assets/readme-overview.png`为内置image_gen生成的职业成长框架概念说明图，随本项目按MIT发布。1672×941无损PNG，保留生成原图像素；不是实际界面截图，也不代表在线Agent或真人经历。画面只使用产品概念与说明文案，未输入个人工作区、账号、简历或聊天记录。SHA-256为`ba2cde1078e834048889b3e2b4890f6cce3703808686433f17744b99216fb2df`；完整生成提示词见[说明图提示词](assets/readme-overview.prompt.md)。原低分辨率JPEG截图不再作为公开包首图。
 - `.github/workflows/pages.yml`只引用GitHub官方Actions来构建和发布专用演示目录，需维护者手动触发；各Action适用其自身许可证，本包未复制Action源码。来源：[GitHub Pages工作流](https://docs.github.com/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
 - `skills`是可选安装渠道，不是Skill运行依赖，未捆绑其代码；命令及来源见[安装说明](references/install.md)。
