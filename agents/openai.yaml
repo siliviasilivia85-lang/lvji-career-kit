@@ -1,0 +1,4 @@
+interface:
+  display_name: "履迹 LüJi"
+  short_description: "把过往经历、当下行动和未来方向连接起来，成为持续陪伴你的职业发展顾问"
+  default_prompt: "使用 $lvji-career-kit，先陪我梳理一段经历，再讨论适合当下的下一步。"

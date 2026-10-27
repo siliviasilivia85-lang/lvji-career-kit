@@ -1,0 +1,8 @@
+/data/
+/.luji/
+/_site/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*

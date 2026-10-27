@@ -1,0 +1,433 @@
+{
+  "format": "luji-skill-kit-export-v1",
+  "package_name": "lvji-career-kit",
+  "release_status": "public-preview",
+  "git_history_included": false,
+  "license": "MIT (existing repository license, commercial use permitted)",
+  "files": [
+    {
+      "path": ".github/workflows/pages.yml",
+      "source": "luji-career-kit/.github/workflows/pages.yml",
+      "sha256": "447a93ab0d7ad1cdca326d4d158c2519efa1b427e07edd244ae9eb2767d6dfc7",
+      "bytes": 843
+    },
+    {
+      "path": "AGENTS.md",
+      "source": "luji-career-kit/AGENTS.md",
+      "sha256": "2ae662ad8684a7155283c850833e8177b2de87220918e0ae33fea1a42eeab251",
+      "bytes": 2833
+    },
+    {
+      "path": "ASSETS.md",
+      "source": "luji-career-kit/ASSETS.md",
+      "sha256": "b0d01fd1f91ceb9a9cdbf16d30f0a7d4a0e4619b1cacb1c2fd81967c2ba3af6a",
+      "bytes": 4536
+    },
+    {
+      "path": "LICENSE",
+      "source": "luji-career-kit/LICENSE",
+      "sha256": "dde30932827c76be1da7e49002486c7226730908cbf17d626a29905387b64a98",
+      "bytes": 1074
+    },
+    {
+      "path": "README.en.md",
+      "source": "luji-career-kit/README.en.md",
+      "sha256": "b953f6c00551cdae3ca4520025ec67651b2c56c60c39bddfcf2577f4c127a806",
+      "bytes": 14907
+    },
+    {
+      "path": "README.es.md",
+      "source": "luji-career-kit/README.es.md",
+      "sha256": "d4c30d70743cdff01da7c2b83e08605e61d3f41698c84eaddf7080281e3468a5",
+      "bytes": 21633
+    },
+    {
+      "path": "README.ja.md",
+      "source": "luji-career-kit/README.ja.md",
+      "sha256": "dce5822c67c2ff4e1b35d8f25bf5c8b0ae31e1b2a9f23b65c42cfc42b7b8965a",
+      "bytes": 24027
+    },
+    {
+      "path": "README.ko.md",
+      "source": "luji-career-kit/README.ko.md",
+      "sha256": "ed500fa0bd1937ad9743764125c62d6e1ee2d1da2c447a5534eea1a4bbf06cf0",
+      "bytes": 23378
+    },
+    {
+      "path": "README.md",
+      "source": "luji-career-kit/README.md",
+      "sha256": "9c37466030ff4ee77a1ba4673a4ba89d572780354a0405be2a9b500794c1dc0f",
+      "bytes": 16477
+    },
+    {
+      "path": "SKILL.md",
+      "source": "luji-career-kit/SKILL.md",
+      "sha256": "b3a0eaade556a8e0e61ae9e5b73ebd5afd3a2858388e7336a428099d1ed117ae",
+      "bytes": 7577
+    },
+    {
+      "path": "TESTING.md",
+      "source": "luji-career-kit/TESTING.md",
+      "sha256": "0af90d6f5807b4f05faccbd36c26d06bec33cde4c148fb9eb97f18a1b0dfa413",
+      "bytes": 5316
+    },
+    {
+      "path": "agents/openai.yaml",
+      "source": "luji-career-kit/agents/openai.yaml",
+      "sha256": "4a122623c876eccb8a451a2fa7e1496edf5362b2efdc8fa4a126a1d41c6b7448",
+      "bytes": 281
+    },
+    {
+      "path": "assets/demo-avatar-b.png",
+      "source": "luji-career-kit/assets/demo-avatar-b.png",
+      "sha256": "8d7d59a478d8b0e9f4558c63ae6fd5de6d6eb214f3769fa0bcbd5799fcdb6bd4",
+      "bytes": 2292293
+    },
+    {
+      "path": "assets/demo-avatar.png",
+      "source": "luji-career-kit/assets/demo-avatar.png",
+      "sha256": "89339f74939d4cfe23b4c0e1a8241b62999a12887fb24f1f0f2d2329fe6ccc57",
+      "bytes": 2192905
+    },
+    {
+      "path": "assets/demo-avatars.prompts.md",
+      "source": "luji-career-kit/assets/demo-avatars.prompts.md",
+      "sha256": "91a3b993cab37fe083edbd36e00b58320f19916582594484db5554ef13e87080",
+      "bytes": 2713
+    },
+    {
+      "path": "assets/demo_intro.html",
+      "source": "luji-career-kit/assets/demo_intro.html",
+      "sha256": "ee626a2d5c0c108077a6f1050650c2ade1bd434307bb5aa23658f7e91d6bd135",
+      "bytes": 3234
+    },
+    {
+      "path": "assets/demo_intro.test.cjs",
+      "source": "luji-career-kit/assets/demo_intro.test.cjs",
+      "sha256": "5240a439630761fe7fec57f3dccdda1c7c7063c219627654ea1bef3ac5202c2a",
+      "bytes": 4561
+    },
+    {
+      "path": "assets/md_workspace.html",
+      "source": "luji-career-kit/assets/md_workspace.html",
+      "sha256": "7c4ceefc905086e6df0238b1af327be9e753815d14ab9a1345d79573431476d5",
+      "bytes": 84212
+    },
+    {
+      "path": "assets/md_workspace.test.cjs",
+      "source": "luji-career-kit/assets/md_workspace.test.cjs",
+      "sha256": "851ee55325b483d60af242163ff04acee06821d6c394153e5735fb2997e60b91",
+      "bytes": 42699
+    },
+    {
+      "path": "assets/readme-preview.jpg",
+      "source": "luji-career-kit/assets/readme-preview.jpg",
+      "sha256": "b6b9e19cab6edd6fc1a266bcd4dc8513980ff122b3ebdc95fccf97763a675e8d",
+      "bytes": 65617
+    },
+    {
+      "path": "assets/resume_gallery.html",
+      "source": "luji-career-kit/assets/resume_gallery.html",
+      "sha256": "99c57f5fbbb29c2e7786d3dd8cf93643e5d11a643c192f89303670a136ac09de",
+      "bytes": 12840
+    },
+    {
+      "path": "assets/resume_gallery.test.cjs",
+      "source": "luji-career-kit/assets/resume_gallery.test.cjs",
+      "sha256": "5f5c0125ce8583c5267fa33ec671059e438c5a456d1795b5abb301ead317f4d0",
+      "bytes": 13075
+    },
+    {
+      "path": "examples/evaluation-notes.md",
+      "source": "luji-career-kit/examples/evaluation-notes.md",
+      "sha256": "058d7caedb30be4664a8729c5ac98ad9abaeb7b48b6e0fadec8c3be63106fea8",
+      "bytes": 365
+    },
+    {
+      "path": "examples/jd-farhill.md",
+      "source": "luji-career-kit/examples/jd-farhill.md",
+      "sha256": "50ff476210cc952b9534789cfe9c5416cd83a1e43a4ab740922a056fa6e47eec",
+      "bytes": 278
+    },
+    {
+      "path": "examples/jd-starbridge.md",
+      "source": "luji-career-kit/examples/jd-starbridge.md",
+      "sha256": "06c14b9eed0825e18b76583a6ade5b9ad0c15f0b887919befe0667a062429628",
+      "bytes": 296
+    },
+    {
+      "path": "examples/learning-plan.md",
+      "source": "luji-career-kit/examples/learning-plan.md",
+      "sha256": "6a76792970aa488ad35abaf70380619b7b022f65ecfbd490e979fc932676779e",
+      "bytes": 378
+    },
+    {
+      "path": "examples/resume.md",
+      "source": "luji-career-kit/examples/resume.md",
+      "sha256": "90b3974c41458ce59120db75d1614557ae7542c9f15dadbca488ae158b45231f",
+      "bytes": 665
+    },
+    {
+      "path": "examples/try-it.md",
+      "source": "luji-career-kit/examples/try-it.md",
+      "sha256": "55192ab16307418b971448efd680d4f70e07cfc4692f07b7eb1be01a976ba884",
+      "bytes": 8783
+    },
+    {
+      "path": "prompts/close-loop.md",
+      "source": "luji-career-kit/prompts/close-loop.md",
+      "sha256": "2d399a0e04c8cf550b42f745cff50fd2567f01d808629ea17c1f215b85703261",
+      "bytes": 918
+    },
+    {
+      "path": "prompts/gap-check.md",
+      "source": "luji-career-kit/prompts/gap-check.md",
+      "sha256": "8df07031ea08eae22c939675ca6daed181b42753dc28d5f1e04a9b46ee027521",
+      "bytes": 788
+    },
+    {
+      "path": "prompts/interview-prep.md",
+      "source": "luji-career-kit/prompts/interview-prep.md",
+      "sha256": "84c6c0442843bdf39b217ae049f50792c5808ca52edf215fa62bc4a1769131d5",
+      "bytes": 2559
+    },
+    {
+      "path": "prompts/portrait.md",
+      "source": "luji-career-kit/prompts/portrait.md",
+      "sha256": "60cde4f21957c590c5a70600126c43b249935079b78df3e3311d54a91fe0687d",
+      "bytes": 715
+    },
+    {
+      "path": "prompts/stage-review.md",
+      "source": "luji-career-kit/prompts/stage-review.md",
+      "sha256": "41414bbcf6152a3d47287a3059aa91d2fd3283f85b6967b2496367b667e3bccc",
+      "bytes": 1210
+    },
+    {
+      "path": "references/agent-map.en.md",
+      "source": "luji-career-kit/references/agent-map.en.md",
+      "sha256": "6ee392df5a46f445f0ada1a2b3df7bf125a24e3e05cdc710f716181f1984f60e",
+      "bytes": 3525
+    },
+    {
+      "path": "references/agent-map.md",
+      "source": "luji-career-kit/references/agent-map.md",
+      "sha256": "99a758f16d449f91f846c9718e70d663162ac1b8e28f2ed0f4487cb783fbacf0",
+      "bytes": 4584
+    },
+    {
+      "path": "references/future.md",
+      "source": "luji-career-kit/references/future.md",
+      "sha256": "f7b68a1554597e0d14564559b83c1b526d2082f976d9bec9d520757888654855",
+      "bytes": 5811
+    },
+    {
+      "path": "references/hosts.md",
+      "source": "luji-career-kit/references/hosts.md",
+      "sha256": "cb2d874d2a0ae33e73ba99b6663a0ba50348b301a19c459f179a7f39262aaa21",
+      "bytes": 5061
+    },
+    {
+      "path": "references/install.md",
+      "source": "luji-career-kit/references/install.md",
+      "sha256": "8d488dc74f5c6c2ae3b5cd1e93add89ecc95617ee0bf649d2096e31a2a4a0d25",
+      "bytes": 5382
+    },
+    {
+      "path": "references/interview.md",
+      "source": "luji-career-kit/references/interview.md",
+      "sha256": "971d7e9f76390b6ae95dad5e22f55aa850f58ece61bcaa8c02b18379825140f4",
+      "bytes": 6013
+    },
+    {
+      "path": "references/map.en.md",
+      "source": "luji-career-kit/references/map.en.md",
+      "sha256": "bcf8f731f0a6175b718c7078bd8e92f650b7d1c0c981d61ddeb5b3b96be11a9b",
+      "bytes": 3875
+    },
+    {
+      "path": "references/map.md",
+      "source": "luji-career-kit/references/map.md",
+      "sha256": "595079686307613f5ebc283380bbf9936905b02fd66d4aa9b2fd5c03a4746a3d",
+      "bytes": 3774
+    },
+    {
+      "path": "references/navigation.md",
+      "source": "luji-career-kit/references/navigation.md",
+      "sha256": "aeb2f3ecd4c5246ff4ce8a6ba7eea09c84c518108622cb3e9b760cb009325e86",
+      "bytes": 6859
+    },
+    {
+      "path": "references/past.md",
+      "source": "luji-career-kit/references/past.md",
+      "sha256": "7f17e119aac5740d870fe83975add22e3a9db228aa0a95b95621f22e80a68f6d",
+      "bytes": 2989
+    },
+    {
+      "path": "references/present.md",
+      "source": "luji-career-kit/references/present.md",
+      "sha256": "1437434e8f4cacd3cf4184ab140e3d34dadcaa1dd0af7a09727bf635bac9dcf5",
+      "bytes": 4390
+    },
+    {
+      "path": "references/resume-samples.json",
+      "source": "luji-career-kit/references/resume-samples.json",
+      "sha256": "022eb134126fa217ab85cfa67051ae6b8d84ef76b5c309b15a1004a6f6d294b0",
+      "bytes": 10222
+    },
+    {
+      "path": "references/resume.md",
+      "source": "luji-career-kit/references/resume.md",
+      "sha256": "02ca7c38196a3cf6d282a3a885215efa59fae02806d86c0b10ce05dfa9f2c8b3",
+      "bytes": 6377
+    },
+    {
+      "path": "references/stages.md",
+      "source": "luji-career-kit/references/stages.md",
+      "sha256": "4475c52a01e763121d0c612e2435b2265d099acf6f7754e1c3d35b40a363e313",
+      "bytes": 3144
+    },
+    {
+      "path": "references/turn-protocol.md",
+      "source": "luji-career-kit/references/turn-protocol.md",
+      "sha256": "f7f32eb062641e40221060abf2b624ae4a4269cf53a9f921246e36b92d6c3a81",
+      "bytes": 11040
+    },
+    {
+      "path": "references/views.md",
+      "source": "luji-career-kit/references/views.md",
+      "sha256": "725ad5497ca7714fead8508541b7b497827b57f75c086b2859ac4355a37deb2d",
+      "bytes": 7041
+    },
+    {
+      "path": "references/workspace.md",
+      "source": "luji-career-kit/references/workspace.md",
+      "sha256": "1705255a7a25bb69e730a0934a0323bdbf4b9226d198ff66375dba1a9e9b1578",
+      "bytes": 13954
+    },
+    {
+      "path": "scripts/demo.py",
+      "source": "luji-career-kit/scripts/demo.py",
+      "sha256": "e2cd0d174fdf76b805d90211f054b7838df6293edb34dafb6984756908560498",
+      "bytes": 19041
+    },
+    {
+      "path": "scripts/demo_gallery.py",
+      "source": "luji-career-kit/scripts/demo_gallery.py",
+      "sha256": "2deac67467da4bc915f8b662b70d6fde05acae7af2d36deabfc872985ae32a1a",
+      "bytes": 9617
+    },
+    {
+      "path": "scripts/demo_site.py",
+      "source": "luji-career-kit/scripts/demo_site.py",
+      "sha256": "aeb334b71f682e950c0c792bf633c0d6e46f9f368daca880741f1ddda5a82f53",
+      "bytes": 25566
+    },
+    {
+      "path": "scripts/md_interview.py",
+      "source": "luji-career-kit/scripts/md_interview.py",
+      "sha256": "e1916a3f22d90d131c5e282f7e12355ae09e61fe3b4476d61b0392cc65b2bc7b",
+      "bytes": 9282
+    },
+    {
+      "path": "scripts/md_navigation.py",
+      "source": "luji-career-kit/scripts/md_navigation.py",
+      "sha256": "eee4dccea808ba17706f92b58cea1e9a5559ed5a38c8df6d9d99e8e7d8677c08",
+      "bytes": 55995
+    },
+    {
+      "path": "scripts/md_resume.py",
+      "source": "luji-career-kit/scripts/md_resume.py",
+      "sha256": "6b87fbea33665ce664c5b758514dce1a22ae859b61fb88b24f18d3db6982dacb",
+      "bytes": 37515
+    },
+    {
+      "path": "scripts/md_views.py",
+      "source": "luji-career-kit/scripts/md_views.py",
+      "sha256": "943e2e3cb3df5c85acac796355afe8cbc0c53ce1a6300ec5a6b9cdd125389f26",
+      "bytes": 16909
+    },
+    {
+      "path": "scripts/md_workspace.py",
+      "source": "luji-career-kit/scripts/md_workspace.py",
+      "sha256": "4a8d9f521e79d1c20dacd5515d6a4f03779db64ba82e1e864ff47a6ca334b5f4",
+      "bytes": 71819
+    },
+    {
+      "path": "scripts/resume_layout.py",
+      "source": "luji-career-kit/scripts/resume_layout.py",
+      "sha256": "91f019ccbfd76f5fa28b808c7cd3636bb79449914967d593e9f148bc50a325cf",
+      "bytes": 16893
+    },
+    {
+      "path": "scripts/test_demo.py",
+      "source": "luji-career-kit/scripts/test_demo.py",
+      "sha256": "4ae117bba66d2bf55fdb6c16559ee94a3c2c0b7b92143b568411bdc74d819efc",
+      "bytes": 11669
+    },
+    {
+      "path": "scripts/test_demo_gallery.py",
+      "source": "luji-career-kit/scripts/test_demo_gallery.py",
+      "sha256": "c25fe5867a66bf4ceb075b913a459976125f01cfc06f08389f0cd69c739e2e53",
+      "bytes": 6617
+    },
+    {
+      "path": "scripts/test_demo_site.py",
+      "source": "luji-career-kit/scripts/test_demo_site.py",
+      "sha256": "6119ffff3c3a75fa183fc32aa12fe88207ed518e49d6e2e8e8178d348ca25196",
+      "bytes": 7806
+    },
+    {
+      "path": "scripts/test_md_interview.py",
+      "source": "luji-career-kit/scripts/test_md_interview.py",
+      "sha256": "08f319f0605fa969687b8864b0f3359650e253819078cb0ccb512f797278a397",
+      "bytes": 8434
+    },
+    {
+      "path": "scripts/test_md_navigation.py",
+      "source": "luji-career-kit/scripts/test_md_navigation.py",
+      "sha256": "f77ffe4daeb136373cac3424bdeb5e5cc05ed30fee705cbb406d656c2e411d75",
+      "bytes": 28245
+    },
+    {
+      "path": "scripts/test_md_resume.py",
+      "source": "luji-career-kit/scripts/test_md_resume.py",
+      "sha256": "736413c05b7a528dabec4f3340b4ec93a8745713ec750717503604962d271d29",
+      "bytes": 31602
+    },
+    {
+      "path": "scripts/test_md_views.py",
+      "source": "luji-career-kit/scripts/test_md_views.py",
+      "sha256": "06f399ae0bcff1b3f4642604a0a9f4d93229d4edbccf4f20bae72e3d4c9723e1",
+      "bytes": 28548
+    },
+    {
+      "path": "scripts/test_md_workspace.py",
+      "source": "luji-career-kit/scripts/test_md_workspace.py",
+      "sha256": "636dac0c15659ff65e0d41d472f4fc5b0b7b673a1d95955320b3b3a3b4e8056f",
+      "bytes": 62504
+    },
+    {
+      "path": "scripts/test_navigation_flow.py",
+      "source": "luji-career-kit/scripts/test_navigation_flow.py",
+      "sha256": "49731d8a690f2d2ea38c1c61309f393e8dbcd20b3f1bd095b3f29cce60bc9d15",
+      "bytes": 10545
+    }
+  ],
+  "requirements": [
+    "an existing Agent with file read/write and execution tools",
+    "Python 3.10+",
+    "optional: an already installed Chrome/Chromium for PDF export"
+  ],
+  "excluded": [
+    "personal workspaces",
+    "Git history",
+    "secrets",
+    "docs/archive",
+    "design explorations",
+    "old application",
+    "model service",
+    "build caches"
+  ],
+  "repository": "https://github.com/siliviasilivia85-lang/lvji-career-kit"
+}

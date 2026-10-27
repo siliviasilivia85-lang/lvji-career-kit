@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>履迹 · 职业工作区</title>
+<style>
+/* Luji frosted workspace. Original CSS, no fonts, images or runtime dependencies.
+   Customize material, contrast and motion with these tokens. */
+:root {
+  --page: #eef0f5;
+  --surface: rgba(255, 255, 255, .62);
+  --ink: #273040;
+  --muted: #657083;
+  --line: rgba(108, 120, 149, .14);
+  --accent: #646caa;
+  --accent-soft: rgba(105, 115, 183, .10);
+  --radius: 22px;
+  --shadow: 0 8px 28px rgba(49, 61, 91, .045), inset 0 1px 0 rgba(255, 255, 255, .96);
+  --ease: cubic-bezier(.2, .75, .25, 1);
+  --spring: cubic-bezier(.22, 1, .36, 1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 300px; min-height: 100vh; isolation: isolate; }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 86% 0%, rgba(190, 199, 229, .56), transparent 48%),
+    radial-gradient(ellipse at 3% 52%, rgba(209, 216, 232, .45), transparent 44%),
+    linear-gradient(130deg, #f8f9fb 0%, #f0f2f7 48%, #edeff5 100%);
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(145deg, rgba(255, 255, 255, .3), transparent 55%, rgba(255, 255, 255, .35));
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+button, a, input, select, textarea { touch-action: manipulation; }
+button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+button:disabled { cursor: default; opacity: .48; }
+button, .button {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid rgba(111, 125, 154, .15);
+  border-radius: 12px;
+  padding: 8px 13px;
+  background: rgba(255, 255, 255, .62);
+  box-shadow: 0 1px 2px rgba(49, 61, 91, .025), inset 0 1px 0 rgba(255, 255, 255, .96);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 160ms var(--ease), border-color 160ms var(--ease), box-shadow 180ms var(--ease), transform 180ms var(--spring);
+}
+button:hover, .button:hover {
+  background: rgba(255, 255, 255, .94);
+  border-color: rgba(110, 122, 162, .27);
+  box-shadow: 0 4px 13px rgba(49, 61, 91, .065), inset 0 1px 0 #fff;
+}
+button:active, .button:active { transform: scale(.975); box-shadow: inset 0 1px 3px rgba(49, 61, 91, .08); }
+button[aria-pressed="true"] { color: #39416b; background: #fff; border-color: rgba(120, 130, 175, .22); }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible,
+textarea:focus-visible, summary:focus-visible {
+  outline: 3px solid #7c87bb;
+  outline-offset: 4px;
+}
+a { color: #53627f; text-underline-offset: 3px; text-decoration-color: rgba(83, 98, 127, .35); overflow-wrap: anywhere; }
+a:hover { color: #3e4f7a; text-decoration-color: currentColor; }
+svg { flex-shrink: 0; }
+h1, h2, h3, p { margin: 0 0 12px; }
+h1 { font-size: 27px; line-height: 1.35; letter-spacing: -.035em; font-weight: 620; }
+h2 { font-size: 19px; line-height: 1.45; letter-spacing: -.015em; font-weight: 600; }
+h3 { font-size: 14px; line-height: 1.6; font-weight: 600; }
+small, .small { font-size: 12px; }
+.muted { color: var(--muted); }
+.eyebrow { font-family: Georgia, serif; font-style: italic; font-size: 17px; letter-spacing: -.015em; color: #778196; margin-bottom: 6px; }
+
+/* A single translucent shell keeps the workspace calm instead of boxing every line. */
+.wrap {
+  width: calc(100% - 80px);
+  max-width: 1160px;
+  min-width: 0;
+  margin: 40px auto;
+  padding: 32px 36px 24px;
+  border: 1px solid rgba(255, 255, 255, .93);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, .64);
+  box-shadow: 0 28px 85px -32px rgba(55, 67, 103, .19), 0 3px 10px rgba(70, 83, 120, .025), inset 0 1px 0 #fff;
+  -webkit-backdrop-filter: blur(30px) saturate(1.15);
+  backdrop-filter: blur(30px) saturate(1.15);
+}
+.app-shell { position: relative; }
+.top { display: flex; justify-content: space-between; gap: 24px; align-items: center; margin-bottom: 25px; }
+.top > div { min-width: 0; }
+.top p { margin-bottom: 0; }
+.top-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.top-actions button { white-space: nowrap; font-size: 12px; }
+#ask-agent, #copy-context {
+  background: linear-gradient(155deg, #69749c, #535d83);
+  border-color: rgba(78, 90, 128, .32);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3), 0 4px 14px rgba(69, 83, 133, .15);
+  color: #fff;
+}
+#ask-agent:hover, #copy-context:hover { background: linear-gradient(155deg, #727da7, #5b668d); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 6px 18px rgba(69, 83, 133, .2); }
+.brand-row { display: flex; align-items: center; gap: 11px; margin-bottom: 27px; min-width: 0; }
+.brand-mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 12px; background: linear-gradient(140deg, rgba(255, 255, 255, .95), rgba(227, 231, 242, .7)); border: 1px solid rgba(255, 255, 255, 1); color: #646f98; box-shadow: 0 3px 10px rgba(74, 88, 130, .07), inset 0 1px 0 #fff; }
+.brand-mark svg { width: 21px; height: 21px; }
+.brand-name { font-size: 15px; font-weight: 620; letter-spacing: .12em; }
+.brand-note { font-size: 11px; color: #7a8395; letter-spacing: .08em; }
+.glass-topbar { min-width: 0; }
+
+/* The active glass capsule is moved by JS. All buttons remain native controls. */
+.tabs {
+  display: flex;
+  position: relative;
+  isolation: isolate;
+  width: fit-content;
+  max-width: 100%;
+  gap: 2px;
+  padding: 6px;
+  margin: 0 0 30px;
+  border: 1px solid rgba(255, 255, 255, .88);
+  border-radius: 17px;
+  background: rgba(217, 224, 238, .35);
+  box-shadow: inset 0 1px 4px rgba(74, 87, 126, .025), 0 1px 0 rgba(255, 255, 255, .6);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tabs button { position: relative; z-index: 1; flex-shrink: 0; min-height: 39px; border: 0; border-radius: 12px; padding: 8px 18px; background: transparent; box-shadow: none; font-size: 13px; color: #6c7587; white-space: nowrap; }
+.tabs button:hover { background: rgba(255, 255, 255, .35); color: #35415c; }
+.tabs button[aria-pressed="true"] { background: rgba(255, 255, 255, .94); color: #35415c; box-shadow: 0 2px 7px rgba(69, 83, 123, .085), 0 0 0 1px rgba(255, 255, 255, .7); }
+.tabs:has(.tab-indicator) button[aria-pressed="true"] { background: transparent; box-shadow: none; }
+.tab-indicator { position: absolute; z-index: 0; left: 6px; top: 6px; height: calc(100% - 12px); border-radius: 12px; background: rgba(255, 255, 255, .96); border: 1px solid rgba(255, 255, 255, .96); box-shadow: 0 2px 7px rgba(69, 83, 123, .085), 0 0 0 1px rgba(255, 255, 255, .6); pointer-events: none; transition: transform 330ms var(--spring), width 330ms var(--spring); }
+
+.view-panel { min-width: 0; }
+.section-head { display: flex; justify-content: space-between; gap: 18px; align-items: center; margin: 24px 0 18px; }
+.section-head:first-child { margin-top: 0; }
+.section-head > div { min-width: 0; }
+.section-head h2 { margin-bottom: 4px; }
+.section-head p { margin: 0; }
+.section-head > button { font-size: 12px; }
+.panel { min-width: 0; padding: 23px; background: var(--surface); border: 1px solid rgba(255, 255, 255, .9); border-radius: var(--radius); box-shadow: var(--shadow); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+.panel > h3 { font-size: 12px; color: #667187; margin-bottom: 17px; font-weight: 550; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; min-width: 0; }
+.stack { display: grid; gap: 12px; min-width: 0; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.between { justify-content: space-between; }
+.pill { display: inline-flex; align-items: center; font-size: 11px; line-height: 1.6; border: 1px solid rgba(108, 120, 149, .11); border-radius: 7px; padding: 2px 8px; color: #69758c; background: rgba(230, 234, 244, .4); white-space: nowrap; }
+.attention { border: 1px solid rgba(142, 130, 104, .16); border-radius: 10px; padding: 9px 12px; background: rgba(248, 245, 238, .74); color: #74654c; font-size: 12px; margin: 12px 0; }
+.empty { color: var(--muted); padding: 24px 0; line-height: 1.8; }
+.item-title { font-weight: 600; font-size: 14px; margin-bottom: 7px; overflow-wrap: anywhere; }
+.item-card { min-width: 0; padding: 17px 0; border-bottom: 1px solid var(--line); }
+.item-card:last-child { border-bottom: 0; padding-bottom: 0; }
+.item-card:first-child { padding-top: 0; }
+.item-card p { margin-bottom: 7px; }
+.source-row { font-size: 12px; margin-top: 13px; display: flex; align-items: center; gap: 10px 12px; flex-wrap: wrap; min-width: 0; }
+.source-row a { max-width: 100%; }
+.source-row button { min-height: 34px; font-size: 12px; border-radius: 9px; padding: 5px 10px; }
+.markdown { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.85; color: #566174; }
+.markdown:empty { display: none; }
+.reading-copy { color: #566174; overflow-wrap: anywhere; line-height: 1.8; }
+.reading-copy h3 { margin-top: 22px; margin-bottom: 8px; }
+.reading-copy p { margin: 0 0 14px; }
+.preview { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Filter controls: quiet defaults, clear selected values and soft opening surfaces. */
+.toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 17px 0 23px; position: relative; z-index: 5; min-width: 0; }
+.toolbar label { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #69758a; min-width: 0; }
+.toolbar input, .toolbar select { background: rgba(255, 255, 255, .7); border: 1px solid rgba(112, 124, 155, .14); border-radius: 12px; padding: 9px 11px; min-width: 0; max-width: 100%; min-height: 40px; color: var(--ink); }
+.toolbar input[type="date"] { width: 153px; font-variant-numeric: tabular-nums; }
+.periods { display: flex; gap: 2px; flex-wrap: nowrap; padding: 4px; background: rgba(221, 227, 240, .42); border: 1px solid rgba(255, 255, 255, .8); border-radius: 13px; }
+.periods button { border: 0; border-radius: 9px; box-shadow: none; background: transparent; min-height: 32px; min-width: 38px; padding: 4px 12px; font-size: 12px; color: #717b8e; }
+.periods button[aria-pressed="true"] { background: #fff; box-shadow: 0 1px 5px rgba(61, 75, 114, .07); color: #3c4865; }
+#previous-period, #next-period { width: 38px; min-height: 38px; padding: 6px; }
+#today, #clear-filters { color: #6b7590; font-size: 12px; }
+.filter-select { display: inline-flex; align-items: center; position: relative; min-width: 0; max-width: 100%; }
+.filter-select > label { margin-right: 8px; white-space: nowrap; }
+.filter-select > select { position: absolute; width: 1px; height: 1px; opacity: 0; clip-path: inset(50%); pointer-events: none; }
+.select-trigger { min-width: 116px; max-width: 240px; min-height: 42px; padding: 9px 13px; justify-content: space-between; border-radius: 12px; background: rgba(255, 255, 255, .66); font-size: 12px; }
+.select-trigger > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.select-trigger svg { width: 14px; height: 14px; opacity: .6; transition: transform 220ms var(--spring); }
+.filter-select[data-open="true"] { z-index: 12; }
+.filter-select[data-open="true"] .select-trigger { border-color: rgba(112, 126, 181, .45); background: rgba(255, 255, 255, .94); box-shadow: 0 0 0 3px rgba(111, 125, 183, .07); }
+.filter-select[data-open="true"] .select-trigger svg { transform: rotate(180deg); }
+.select-menu { position: absolute; left: 0; top: calc(100% + 8px); z-index: 50; min-width: 100%; width: max-content; max-width: min(300px, calc(100vw - 48px)); max-height: 300px; padding: 6px; margin: 0; overflow-y: auto; overscroll-behavior: contain; border: 1px solid rgba(255, 255, 255, .94); border-radius: 16px; background: rgba(250, 251, 255, .94); box-shadow: 0 16px 38px -10px rgba(48, 61, 100, .2), inset 0 1px 0 #fff; -webkit-backdrop-filter: blur(28px); backdrop-filter: blur(28px); }
+.select-menu button, .select-menu [role="option"] { display: flex; width: 100%; justify-content: space-between; gap: 18px; min-height: 38px; padding: 8px 11px; border: 0; border-radius: 10px; background: transparent; box-shadow: none; text-align: left; font-size: 12px; }
+.select-menu button:hover, .select-menu [role="option"]:focus-visible { background: rgba(102, 118, 180, .07); }
+.select-menu [aria-selected="true"] { background: rgba(102, 118, 180, .10); color: #535f91; }
+#roles-sort-chips, .stage-filter { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.sort-chip, .filter-chip { min-height: 34px; border-radius: 11px; padding: 6px 12px; font-size: 12px; color: #707b8f; background: rgba(255, 255, 255, .35); border-color: transparent; box-shadow: none; white-space: nowrap; }
+.sort-chip:hover, .filter-chip:hover { border-color: rgba(115, 126, 160, .13); background: rgba(255, 255, 255, .75); box-shadow: 0 2px 9px rgba(70, 83, 124, .04); }
+.sort-chip[aria-pressed="true"], .filter-chip[aria-pressed="true"] { background: rgba(255, 255, 255, .96); color: #4e5b87; border-color: rgba(112, 128, 180, .23); box-shadow: 0 2px 8px rgba(69, 83, 123, .055), inset 0 1px 0 #fff; }
+.filter-summary, #filter-summary { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; color: #7a8395; font-size: 12px; margin: 18px 0 14px; min-height: 27px; }
+.filter-summary .filter-clear { font-size: 11px; min-height: 28px; padding: 3px 9px; border-radius: 8px; color: #66749a; background: rgba(230, 234, 246, .55); border-color: rgba(120, 135, 180, .12); box-shadow: none; }
+
+/* Direction cards retain one stable text size. Decoration never encodes a score. */
+.role-track { display: flex; gap: 18px; overflow-x: auto; padding: 5px 2px 23px; scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: #c8cedf transparent; min-width: 0; }
+.role-card { position: relative; display: block; width: 288px; flex: 0 0 288px; min-height: 320px; scroll-snap-align: start; border: 1px solid rgba(255, 255, 255, .96); border-radius: 25px; padding: 25px; text-align: left; white-space: normal; background: linear-gradient(152deg, rgba(255, 255, 255, .87), rgba(249, 250, 255, .55)); box-shadow: 0 9px 25px -13px rgba(60, 74, 118, .15), inset 0 1px 0 #fff; -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+.role-card:hover { border-color: rgba(147, 160, 203, .5); background: linear-gradient(152deg, rgba(255, 255, 255, .98), rgba(248, 250, 255, .7)); box-shadow: 0 16px 35px -16px rgba(64, 78, 124, .23), inset 0 1px 0 #fff; transform: translateY(-3px); }
+.role-card:active { transform: translateY(-1px) scale(.99); }
+.role-card h3 { font-size: 18px; line-height: 1.45; letter-spacing: -.025em; margin-bottom: 12px; max-width: 90%; }
+.role-card .counts { margin: 23px 0 17px; line-height: 2; color: #5e6c83; }
+.role-card p:last-child { margin: 0; }
+.role-card > span:last-child { display: block; margin-top: 22px; color: #6d7996; }
+.role-orbit { display: flex; align-items: center; justify-content: space-between; margin-bottom: 21px; min-height: 44px; color: #8d99bf; }
+.role-orbit svg { width: 46px; height: 46px; stroke-width: 1.15; }
+.role-rank { font-family: Georgia, serif; font-style: italic; font-size: 20px; color: #a5aec4; }
+.role-progress { height: 4px; margin: 17px 0; overflow: hidden; border-radius: 4px; background: rgba(124, 141, 184, .12); }
+.role-progress > span, .role-progress > i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #a2afcf, #7d89b3); }
+
+/* Calendar surfaces belong to the same material family rather than a separate table UI. */
+.calendar-shell { max-width: 100%; overflow-x: auto; border-radius: 18px; margin: 18px 0; border: 1px solid rgba(143, 156, 184, .13); background: rgba(255, 255, 255, .28); scrollbar-width: thin; }
+.calendar { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); margin: 0; min-width: 0; }
+.weekday, .day { min-width: 0; padding: 11px; border-right: 1px solid rgba(108, 120, 149, .1); border-bottom: 1px solid rgba(108, 120, 149, .1); }
+.weekday:nth-child(7n), .day:nth-child(7n) { border-right: 0; }
+.weekday { font-size: 11px; font-weight: 500; color: #7b8599; text-align: center; background: rgba(233, 237, 246, .33); padding: 11px; }
+.day { min-height: 115px; background: rgba(255, 255, 255, .33); }
+.day.outside { background: rgba(230, 235, 245, .2); color: #9099aa; }
+.day.today { background: rgba(238, 241, 252, .7); box-shadow: inset 0 0 0 1px rgba(125, 141, 192, .39); }
+.day-number { font-size: 11px; font-variant-numeric: tabular-nums; color: #727f96; margin-bottom: 8px; }
+.calendar-action { display: block; width: 100%; border: 1px solid rgba(134, 149, 189, .10); border-radius: 8px; background: rgba(220, 227, 245, .5); margin: 5px 0; padding: 5px 7px; font-size: 11px; line-height: 1.6; text-align: left; overflow-wrap: anywhere; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6); }
+.calendar-action:hover { background: rgba(219, 227, 249, .8); border-color: rgba(132, 149, 196, .22); }
+.year-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 20px 0; }
+.month-card { display: block; padding: 18px; border: 1px solid rgba(255, 255, 255, .92); border-radius: 16px; background: rgba(255, 255, 255, .49); box-shadow: var(--shadow); text-align: left; }
+.month-card strong { display: block; margin-bottom: 6px; }
+
+.pipeline { display: flex; overflow-x: auto; align-items: flex-start; gap: 18px; padding: 5px 2px 23px; min-width: 0; scrollbar-width: thin; scrollbar-color: #c8cedf transparent; }
+.stage { flex: 0 0 265px; min-width: 0; background: rgba(226, 232, 245, .26); border: 1px solid rgba(255, 255, 255, .7); border-radius: 22px; padding: 16px; }
+.stage h3 { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #6e7d96; padding: 2px 3px 5px; }
+.stage h3 > span { display: inline-grid; place-items: center; min-width: 22px; min-height: 22px; padding: 1px 5px; background: rgba(255, 255, 255, .6); border-radius: 7px; font-size: 11px; }
+.application-card { display: block; width: 100%; padding: 18px; text-align: left; margin: 10px 0 0; background: rgba(255, 255, 255, .74); border: 1px solid rgba(255, 255, 255, .96); border-radius: 15px; box-shadow: 0 3px 11px rgba(69, 83, 123, .035), inset 0 1px 0 #fff; white-space: normal; overflow-wrap: anywhere; }
+.application-card:hover { background: rgba(255, 255, 255, .98); border-color: rgba(139, 155, 202, .35); box-shadow: 0 7px 19px rgba(69, 83, 123, .075); transform: translateY(-2px); }
+.application-card p { margin: 7px 0; }
+.application-card p:last-child { margin-bottom: 0; }
+.application-card strong { font-weight: 600; }
+.history { list-style: none; padding: 0; margin: 24px 0; }
+.history li { border-left: 1px solid rgba(132, 146, 184, .28); padding: 0 0 23px 21px; position: relative; }
+.history li::before { content: ""; position: absolute; width: 8px; height: 8px; border-radius: 50%; background: #a9b5d3; border: 2px solid #f9faff; box-shadow: 0 0 0 1px rgba(146, 161, 202, .38); left: -5px; top: 7px; }
+.history li:last-child { border-color: transparent; }
+.history p { margin: 5px 0; }
+.history time { font-size: 12px; font-variant-numeric: tabular-nums; color: #7d889e; }
+
+/* Detail and Agent dialogs use the same frosted edge, opening motion supplied by JS. */
+details { border-top: 1px solid var(--line); padding: 14px 0; }
+summary { cursor: pointer; color: #6c7990; }
+.facts { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 9px; font-size: 12px; margin: 18px 0; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; overflow-wrap: anywhere; }
+dialog { border: 1px solid rgba(255, 255, 255, .95); border-radius: 25px; max-width: 780px; width: calc(100% - 40px); max-height: min(86vh, 900px); padding: 0; background: rgba(248, 250, 255, .97); color: var(--ink); box-shadow: 0 38px 100px -20px rgba(40, 54, 92, .33), inset 0 1px 0 #fff; -webkit-backdrop-filter: blur(28px); backdrop-filter: blur(28px); overscroll-behavior: contain; }
+dialog::backdrop { background: rgba(58, 70, 103, .18); -webkit-backdrop-filter: blur(7px); backdrop-filter: blur(7px); }
+.dialog-head { position: sticky; top: 0; background: rgba(248, 250, 255, .94); border-bottom: 1px solid var(--line); padding: 20px 25px; display: flex; align-items: center; gap: 14px; justify-content: space-between; z-index: 2; -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+.dialog-head h2 { margin: 0; font-size: 18px; }
+.dialog-head button { border-radius: 50%; width: 34px; height: 34px; min-height: 34px; padding: 0; font-size: 12px; }
+.dialog-body { padding: 6px 27px 27px; }
+.dialog-body section { margin: 22px 0 28px; }
+.dialog-body textarea { display: block; width: 100%; min-height: 110px; padding: 13px 15px; border: 1px solid rgba(126, 143, 184, .21); border-radius: 14px; background: rgba(255, 255, 255, .72); resize: vertical; margin-top: 10px; box-shadow: inset 0 1px 4px rgba(63, 80, 125, .025); }
+.dialog-body pre { white-space: pre-wrap; word-break: break-word; padding: 17px; background: rgba(228, 234, 247, .42); border: 1px solid rgba(133, 149, 190, .09); border-radius: 13px; font-size: 12px; line-height: 1.8; color: #67758d; }
+.dialog-body .toolbar { margin-bottom: 0; }
+#agent-dialog .dialog-body { padding-top: 23px; }
+.footer { border-top: 1px solid rgba(115, 131, 167, .1); margin-top: 34px; padding-top: 18px; color: #7a8497; font-size: 11px; line-height: 1.8; }
+#notice:empty { display: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+[hidden] { display: none !important; }
+
+/* Opaque material is an intentional fallback, not an empty transparent surface. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .wrap { background: #f7f8fc; }
+  .panel, .role-card, .application-card, .select-menu { background: #fff; }
+  dialog, .dialog-head { background: #fafbfe; }
+}
+
+@media(max-width:760px) {
+  :root { font-size: 14px; }
+  .wrap { width: calc(100% - 32px); margin: 16px auto; padding: 23px 22px 20px; border-radius: 25px; }
+  .top { gap: 18px; margin-bottom: 23px; align-items: flex-start; }
+  .top-actions { gap: 6px; }
+  .top-actions button { padding: 8px 10px; min-height: 38px; }
+  .brand-row { margin-bottom: 22px; }
+  h1 { font-size: 24px; }
+  .eyebrow { font-size: 16px; }
+  .tabs { margin-bottom: 25px; width: 100%; }
+  .tabs button { flex: 1 0 auto; padding: 8px 13px; font-size: 12px; }
+  .grid { grid-template-columns: 1fr; gap: 15px; }
+  .section-head { gap: 12px; margin-top: 22px; }
+  .section-head h2 { font-size: 18px; }
+  .panel { padding: 20px; border-radius: 19px; }
+  .toolbar { gap: 9px; }
+  .role-track { gap: 14px; }
+  .role-card { flex-basis: 265px; width: 265px; padding: 23px; }
+  .stage { flex-basis: 252px; }
+  .year-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .calendar { grid-template-columns: repeat(7, minmax(105px, 1fr)); }
+  .calendar.week { min-width: 735px; }
+  .day { padding: 9px; }
+  .filter-select { flex: 0 1 auto; }
+  .select-trigger { min-width: 110px; }
+  .dialog-head { padding: 17px 19px; }
+  .dialog-body { padding: 3px 20px 23px; }
+  #agent-dialog .dialog-body { padding-top: 20px; }
+  .facts { grid-template-columns: 85px minmax(0, 1fr); }
+}
+
+@media(max-width:480px) {
+  .wrap { width: calc(100% - 20px); margin: 10px auto; padding: 20px 17px 18px; border-radius: 22px; }
+  .top { display: block; }
+  .top-actions { justify-content: flex-start; margin-top: 16px; }
+  .brand-note { display: none; }
+  .tabs { border-radius: 15px; padding: 5px; gap: 0; }
+  .tabs button { min-height: 39px; padding: 8px 10px; }
+  .tab-indicator { top: 5px; left: 5px; height: calc(100% - 10px); }
+  .section-head { align-items: flex-start; }
+  .section-head > button { flex-shrink: 0; padding: 6px 10px; }
+  .panel { padding: 17px; }
+  .toolbar { gap: 10px 8px; }
+  .filter-select > label { margin-right: 5px; }
+  .select-trigger { min-width: 102px; max-width: 220px; }
+  .select-menu { max-width: calc(100vw - 52px); }
+  #roles-sort-chips { width: 100%; gap: 4px; }
+  .sort-chip { padding: 6px 10px; min-height: 36px; }
+  .filter-chip { min-height: 36px; }
+  .source-row button { min-height: 38px; }
+  dialog { width: calc(100% - 20px); max-height: 90vh; border-radius: 22px; }
+  .dialog-head button { width: 40px; height: 40px; min-height: 40px; }
+}
+
+@media(hover:none) {
+  .role-card:hover, .application-card:hover { transform: none; }
+  .tabs button, button, .button { min-height: 44px; }
+  .periods button { min-height: 38px; }
+  .select-trigger { min-height: 44px; }
+  .select-menu button, .sort-chip, .filter-chip { min-height: 44px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .role-card:hover, .application-card:hover, button:active { transform: none; }
+}
+
+@media(forced-colors:active) {
+  body::before, body::after, .role-orbit { display: none; }
+  .wrap, .panel, .role-card, .stage, .application-card, .tabs, .select-menu, dialog { background: Canvas; border: 1px solid CanvasText; box-shadow: none; }
+  .tabs button[aria-pressed="true"], .sort-chip[aria-pressed="true"], .filter-chip[aria-pressed="true"], .select-menu [aria-selected="true"] { border: 2px solid Highlight; color: Highlight; background: Canvas; }
+  .tab-indicator { background: Canvas; border-color: Highlight; }
+  #ask-agent, #copy-context { color: ButtonText; background: ButtonFace; border-color: ButtonText; }
+}
+
+
+/* Small shared elements and non-color-only evidence segments. */
+.ui-icon { width:18px; height:18px; }
+.filter-label { font-size:12px; color:var(--muted); margin-right:8px; white-space:nowrap; }
+.chip-count { margin-left:6px; font-size:11px; opacity:.75; font-variant-numeric:tabular-nums; }
+.role-progress { display:flex; gap:3px; }
+.role-progress > .supported { background:#8293b9; }
+.role-progress > .partial { background:#b6c1da; }
+.role-progress > .gap { background:#d4d9e3; }
+.role-progress > .unknown { background:repeating-linear-gradient(120deg,#e1e5ed 0,#e1e5ed 3px,#f5f6fa 3px,#f5f6fa 6px); }
+.role-open { display:flex!important; justify-content:space-between; }
+.stage h3 > span:first-child { display:flex; gap:7px; padding:0; background:transparent; }
+.stage-dot { width:6px; height:6px; border-radius:50%; background:#94a1bf; }
+.card-arrow { color:#8e9eb9; font-size:17px; }
+.option-check { color:var(--accent); }
+.empty-mark { display:block; font-size:32px; color:#9ba8c4; margin-bottom:10px; }
+.footer { display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; }
+@media(max-width:480px) { .brand-row { margin-bottom:17px; } .filter-label { margin-right:6px; } }
+
+
+/* Keep the work itself above the fold; the brand occupies one quiet line. */
+.brand-row { margin-bottom:7px; }
+.brand-note { font-family:Georgia,serif; font-style:italic; letter-spacing:0; font-size:15px; }
+#view-roles > .toolbar { display:none; }
+.top { margin-bottom:20px; }
+.role-card { display:flex; flex-direction:column; align-items:stretch; justify-content:flex-start; }
+.role-card > .row { width:100%; margin-bottom:12px; }
+.role-orbit { min-height:32px; margin-bottom:0; }
+.role-orbit svg { width:45px; height:32px; }
+.role-card .counts { margin:15px 0 12px; }
+.role-progress { margin:12px 0; }
+.role-open { margin-top:auto!important; padding-top:16px; }
+@media(max-width:480px) { .brand-row { margin-bottom:7px; } .brand-note { display:inline; } }
+
+.role-card { gap:0; min-height:340px; padding:22px 24px; }
+.role-card > .row { margin-bottom:8px; }
+.role-card h3 { margin-bottom:12px; }
+.role-meta { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+.role-card .counts { margin:10px 0; line-height:1.8; }
+.role-track.focused { justify-content:center; }
+@media(max-width:760px) { .role-track.focused { justify-content:flex-start; } }
+
+@media(hover:none) { .dialog-head button { width:44px; height:44px; min-height:44px; } .source-row button { min-height:44px; } }
+</style>
+</head>
+<body>
+<main class="wrap app-shell">
+ <header class="top glass-topbar"><div><div class="brand-row"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none"><path d="M5 20C8 20 8 8 14 8s6 12 9 12M5 14h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="5" cy="20" r="2" fill="currentColor"/><circle cx="14" cy="8" r="2" fill="currentColor"/><circle cx="23" cy="20" r="2" fill="currentColor"/></svg></span><span class="brand-name">履迹</span><span class="brand-note">A little further.</span></div><h1 class="sr-only">职业工作区</h1><p class="muted small" id="snapshot-label"></p></div><div class="top-actions"><button id="ask-agent" class="agent-trigger"><svg class="ui-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m10 2 2 6 6 2-6 2-2 6-2-6-6-2 6-2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>请 Agent 调整</button><button id="snapshot-info">快照信息</button></div></header>
+ <nav class="tabs" aria-label="工作区视图"><span id="tab-indicator" class="tab-indicator" aria-hidden="true"></span><button data-view="overview" aria-pressed="true">总览</button><button data-view="plan" aria-pressed="false">统一计划</button><button data-view="roles" aria-pressed="false">所向</button><button data-view="applications" aria-pressed="false">投递进展</button></nav>
+ <div id="notice" role="status" aria-live="polite" class="small muted"></div>
+ <section class="view-panel" id="view-overview" aria-label="总览"></section>
+ <section class="view-panel" id="view-plan" aria-label="统一计划" hidden><div class="section-head"><div><h2>安排与实际进展</h2></div></div><div class="toolbar"><div class="periods" role="group" aria-label="计划尺度"><button data-period="daily" aria-pressed="true">日</button><button data-period="weekly" aria-pressed="false">周</button><button data-period="monthly" aria-pressed="false">月</button><button data-period="yearly" aria-pressed="false">年</button></div><label>查看日期 <input id="plan-date" type="date"></label><button id="previous-period" aria-label="上一时段">←</button><button id="next-period" aria-label="下一时段">→</button><button id="today">回到快照日期</button></div><div id="plan-content"></div></section>
+ <section class="view-panel" id="view-roles" aria-label="所向" hidden><div class="section-head"><div><h2>可以靠近的方向</h2></div></div><div class="toolbar"><label>排序 <select id="role-sort"><option value="fit">证据支持程度</option><option value="information">资料充分度</option><option value="priority">我的偏好</option></select></label></div><div id="roles-sort-chips" class="sort-chips" role="group" aria-label="方向排序"><button class="sort-chip" data-sort="fit" aria-pressed="true">证据支持</button><button class="sort-chip" data-sort="information" aria-pressed="false">资料充分度</button><button class="sort-chip" data-sort="priority" aria-pressed="false">我的偏好</button></div><div id="roles-content"></div><details><summary class="small muted">排序依据</summary><p class="small muted">证据排序使用（已支持条数 + 0.5 × 部分支持条数）÷ 已判断条数，仅用于比较要求覆盖。资料充分度独立使用已判断 / 全部要求。尚未判断不等于不匹配；需重新评估的判断排在有效判断之后。偏好来自目标文件中的优先级。</p></details></section>
+ <section class="view-panel" id="view-applications" aria-label="投递进展" hidden><div class="section-head"><div><h2>机会与下一节点</h2></div></div><div class="toolbar"><label>方向 <select id="application-role"></select></label><label>公司 <select id="application-company"></select></label><label>机会 <select id="application-opportunity"></select></label><button id="clear-filters" hidden>查看全部</button></div><div class="stage-filter" id="stage-filters" role="group" aria-label="按阶段筛选"></div><div id="filter-summary" class="filter-summary" aria-live="polite"></div><div id="applications-content"></div></section>
+ <footer class="footer"><span>本地快照 · 内容由你掌握</span><span>修改请交给 Agent，保存后刷新。</span></footer>
+</main>
+<dialog id="detail"><div class="dialog-head"><h2 id="detail-title"></h2><button id="close-detail" aria-label="关闭详情">关闭</button></div><div class="dialog-body" id="detail-body"></div></dialog>
+<dialog id="agent-dialog"><div class="dialog-head"><h2>把调整交给 Agent</h2><button id="close-agent" aria-label="关闭调整请求">关闭</button></div><div class="dialog-body"><label for="agent-note">想调整哪一处</label><textarea id="agent-note" placeholder="例如：把这项行动改到下周二，先展示会影响的安排。"></textarea><p class="small muted">复制后发给当前 Agent。页面不会执行修改或保存。</p><pre id="agent-context"></pre><div class="toolbar"><button id="copy-context">复制上下文请求</button><span id="copy-status" class="small muted" role="status" aria-live="polite"></span></div></div></dialog>
+<script type="application/json" id="workspace-data">__LUJI_DATA__</script>
+<script>
+'use strict';
+(() => {
+const DATA=JSON.parse(document.getElementById('workspace-data').textContent);
+/** @param {string} id @returns {any} */
+const $=id=>document.getElementById(id);
+/** @param {string} selector @returns {NodeListOf<HTMLButtonElement>} */
+const buttons=selector=>/** @type {NodeListOf<HTMLButtonElement>} */(document.querySelectorAll(selector));
+const E=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+const STAGES=[['researching','了解中'],['preparing','准备中'],['applied','已投递'],['screening','筛选中'],['interview','面试中'],['offer','收到 Offer'],['closed','已结束']];
+const STATUS={todo:'待开始',doing:'进行中',done:'已完成',paused:'已暂停'};
+const TYPE={personal:'个人资料',work:'工作经历',education:'教育经历',project:'项目经历',award:'奖项',learning:'学习经历',portrait:'暂定画像',item:'持续事项',goal:'目标',thought:'想法',research:'调研',jd:'岗位要求',assessment:'匹配判断',check:'差距 Check',action:'行动','learning-log':'学习记录','work-log':'工作记录',plan:'计划',application:'投递记录',feedback:'反馈','interview-story':'经历故事卡','interview-prep':'面试准备单','interview-practice':'模拟面试记录','photo-note':'照片说明',note:'独立想法','stage-summary':'阶段回看'};
+const DOCS=new Map(DATA.documents.map(doc=>[doc.path,doc]));
+const ACTIONS=new Map(DATA.actions.map(doc=>[doc.metadata.id,doc]));
+const parseDate=value=>new Date(value+'T12:00:00Z');
+const iso=date=>date.toISOString().slice(0,10);
+const plus=(date,days)=>{const next=new Date(date);next.setUTCDate(next.getUTCDate()+days);return next};
+const initial={...DATA.initial_state};
+const query=new URLSearchParams(location.hash.slice(1));
+const state={view:query.get('view')||initial.view||'overview',period:query.get('period')||initial.period||'daily',date:query.get('date')||DATA.as_of,role:query.has('role')?query.get('role'):(initial.role||''),company:query.has('company')?query.get('company'):(initial.company||''),opportunity:query.has('opportunity')?query.get('opportunity'):(initial.opportunity||''),sort:query.get('sort')||'fit',stage:query.get('stage')||'',selected:[]};
+if(!['overview','plan','roles','applications'].includes(state.view))state.view='overview';
+if(!['daily','weekly','monthly','yearly'].includes(state.period))state.period='daily';
+if(!/^\d{4}-\d{2}-\d{2}$/.test(state.date)||Number.isNaN(parseDate(state.date).valueOf())||iso(parseDate(state.date))!==state.date)state.date=DATA.as_of;
+if(!['fit','information','priority'].includes(state.sort))state.sort='fit';
+if(!STAGES.some(stage=>stage[0]===state.stage))state.stage='';
+const href=path=>DATA.source_links[path]?.href;
+const sourceLink=path=>href(path)?`<a href="${E(href(path))}">${E(path)}</a>`:`<span>${E(path)}</span>`;
+const freshness=doc=>doc.freshness==='stale'?'<div class="attention">来源已变化，需重新评估</div>':doc.freshness==='unverified'?'<div class="attention">来源基准未齐，需重新评估</div>':'';
+function readingCopy(text){const blocks=[],paragraph=[];const flush=()=>{if(paragraph.length){blocks.push('<p>'+E(paragraph.join('\n')).replace(/\n/g,'<br>')+'</p>');paragraph.length=0}};for(const line of String(text||'').split('\n')){const heading=line.match(/^#{1,6}\s+(.+)$/);if(heading){flush();blocks.push('<h3>'+E(heading[1])+'</h3>')}else if(!line.trim()){flush()}else{paragraph.push(line)}}flush();return '<div class="reading-copy">'+blocks.join('')+'</div>'}
+const body=doc=>['interview-story','interview-prep','interview-practice','note','stage-summary'].includes(doc.metadata.type)?readingCopy(doc.body):`<div class="markdown">${E(doc.body)}</div>`;
+const sourceRow=doc=>`<div class="source-row">${sourceLink(doc.path)}<button class="small" data-request="${E(doc.path)}">请 Agent 调整此文件</button></div>`;
+// Native, local-only motion: commit state immediately, animate its visual change.
+const runningMotion = new Set();
+const elementMotion = new WeakMap();
+const closingDialogs = new WeakMap();
+const reducedMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true;
+function stopMotion() {
+  for (const animation of runningMotion) animation.cancel();
+  runningMotion.clear();
+  document.querySelectorAll('[data-exit-ghost]').forEach(node => node.remove());
+}
+function animateElement(element, frames, options = {}) {
+  if (!element || reducedMotion() || typeof element.animate !== 'function') return null;
+  elementMotion.get(element)?.cancel();
+  const animation = element.animate(frames, {duration: 280, easing: 'cubic-bezier(.22,1,.36,1)', ...options});
+  runningMotion.add(animation); elementMotion.set(element,animation);
+  animation.finished.then(() => runningMotion.delete(animation), () => runningMotion.delete(animation));
+  return animation;
+}
+function replaceWithMotion(container, html) {
+  const active = document.activeElement;
+  const focusKey = active?.getAttribute('data-motion-key');
+  const old = new Map(Array.from(container.querySelectorAll('[data-motion-key]'), node => [node.getAttribute('data-motion-key'), {node, rect: node.getBoundingClientRect()}]));
+  stopMotion();
+  const fragment = document.createElement('template');
+  fragment.innerHTML = html;
+  // Reuse unchanged cards: stable IDs keep interaction and visual identity.
+  const incoming = new Set();
+  fragment.content.querySelectorAll('[data-motion-key]').forEach(node => {
+    const key = node.getAttribute('data-motion-key'); incoming.add(key);
+    const previous = old.get(key)?.node;
+    if (previous && previous.outerHTML === node.outerHTML) node.replaceWith(previous);
+  });
+  container.replaceChildren(fragment.content);
+  for (const [key, previous] of old) {
+    if (!incoming.has(key) && previous.rect.width > 0 && !reducedMotion() && typeof previous.node.animate === 'function') {
+      const ghost = previous.node.cloneNode(true);
+      if (!(ghost instanceof HTMLElement)) continue;
+      ghost.setAttribute('data-exit-ghost', ''); ghost.setAttribute('aria-hidden', 'true'); ghost.setAttribute('inert', '');
+      Object.assign(ghost.style, {position:'fixed', left:previous.rect.left+'px', top:previous.rect.top+'px', width:previous.rect.width+'px', height:previous.rect.height+'px', margin:'0', pointerEvents:'none', zIndex:'3'});
+      document.body.append(ghost);
+      const animation = animateElement(ghost, [{opacity:.7, transform:'translateY(0)'}, {opacity:0, transform:'translateY(-5px)'}], {duration:130});
+      if (animation) animation.finished.then(() => ghost.remove(), () => ghost.remove()); else ghost.remove();
+    }
+  }
+  container.querySelectorAll('[data-motion-key]').forEach((node, index) => {
+    const key = node.getAttribute('data-motion-key'), before = old.get(key)?.rect, after = node.getBoundingClientRect();
+    if (before && after.width > 0) {
+      const x = before.left-after.left, y = before.top-after.top;
+      if (Math.abs(x)+Math.abs(y)>1) animateElement(node, [{transform:`translate(${x}px,${y}px)`}, {transform:'translate(0,0)'}], {duration:360});
+    } else if (!before) {
+      animateElement(node, [{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}], {delay:Math.min(index,5)*25, duration:280});
+    }
+  });
+  if (focusKey) Array.from(container.querySelectorAll('[data-motion-key]')).find(node => node.getAttribute('data-motion-key')===focusKey)?.focus({preventScroll:true});
+}
+function moveTabIndicator() {
+  const selected = document.querySelector('.tabs button[aria-pressed="true"]');
+  const indicator = $('tab-indicator');
+  if (!selected || !indicator) return;
+  indicator.style.width = selected.getBoundingClientRect().width+'px';
+  indicator.style.transform = `translateX(${/** @type {HTMLElement} */(selected).offsetLeft-(parseFloat(getComputedStyle(indicator).left)||0)}px)`;
+}
+window.addEventListener('resize', moveTabIndicator);
+window.matchMedia?.('(prefers-reduced-motion: reduce)').addEventListener?.('change', () => {if(reducedMotion())stopMotion()});
+const selectWidgets = new Map();
+function closeSelects(restore = false, except = null) {
+  for (const widget of selectWidgets.values()) {
+    if (widget===except || widget.wrapper.dataset.open!=='true') continue;
+    widget.wrapper.dataset.open='false'; widget.trigger.setAttribute('aria-expanded','false'); widget.menu.hidden=true;
+    if (restore) widget.trigger.focus();
+  }
+}
+function syncSelects() {
+  for (const widget of selectWidgets.values()) {
+    const options = Array.from(widget.native.options);
+    widget.value.textContent = options.find(option=>option.selected)?.text || '全部';
+    widget.trigger.setAttribute('aria-label',widget.label+'：'+widget.value.textContent);
+    widget.menu.innerHTML = options.map(option=>`<button type="button" role="option" tabindex="-1" aria-selected="${String(option.selected)}" data-option-value="${E(option.value)}"><span>${E(option.text)}</span><span aria-hidden="true" class="option-check">${option.selected?'✓':''}</span></button>`).join('');
+  }
+}
+function enhanceSelect(id, label) {
+  const native = $(id), originalLabel = native.parentElement;
+  const wrapper = document.createElement('div'); wrapper.className='filter-select';wrapper.dataset.open='false';
+  wrapper.innerHTML=`<span class="filter-label">${E(label)}</span><button type="button" class="select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="${id}-menu"><span class="select-value"></span><svg class="ui-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m6 8 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div id="${id}-menu" class="select-menu" role="listbox" aria-label="${E(label)}" hidden></div>`;
+  originalLabel.replaceWith(wrapper);wrapper.append(native);native.hidden=true;native.setAttribute('aria-hidden','true');native.tabIndex=-1;
+  const widget={wrapper,native,label,trigger:/** @type {HTMLButtonElement} */(wrapper.querySelector('.select-trigger')),value:wrapper.querySelector('.select-value'),menu:/** @type {HTMLDivElement} */(wrapper.querySelector('.select-menu'))};
+  selectWidgets.set(id,widget);
+  const open=()=>{closeSelects(false,widget);syncSelects();wrapper.dataset.open='true';widget.menu.hidden=false;widget.trigger.setAttribute('aria-expanded','true');widget.menu.style.left='0';const rect=widget.menu.getBoundingClientRect();if(rect.width>0){const adjustment=rect.right>window.innerWidth-12?window.innerWidth-12-rect.right:rect.left<12?12-rect.left:0;widget.menu.style.left=adjustment+'px'}animateElement(widget.menu,[{opacity:0,transform:'translateY(-4px) scale(.985)'},{opacity:1,transform:'translateY(0) scale(1)'}],{duration:180});};
+  const focusOption=(index)=>{const options=Array.from(/** @type {NodeListOf<HTMLButtonElement>} */(widget.menu.querySelectorAll('[role="option"]')));options[Math.max(0,Math.min(options.length-1,index))]?.focus()};
+  widget.trigger.addEventListener('click',()=>{if(wrapper.dataset.open==='true')closeSelects(true);else open()});
+  widget.menu.addEventListener('click',event=>{const option=/** @type {HTMLElement} */(event.target).closest('[role="option"]');if(!option)return;native.value=option.getAttribute('data-option-value');closeSelects();native.dispatchEvent(new Event('change',{bubbles:true}));widget.trigger.focus()});
+  wrapper.addEventListener('keydown',event=>{
+    const options=Array.from(widget.menu.querySelectorAll('[role="option"]'));
+    if(event.key==='Escape'&&wrapper.dataset.open==='true'){event.preventDefault();event.stopPropagation();closeSelects(true);return}
+    if(event.key==='Tab'){closeSelects();return}
+    if(['ArrowDown','ArrowUp','Home','End'].includes(event.key)){
+      event.preventDefault();const wasOpen=wrapper.dataset.open==='true';if(!wasOpen)open();
+      const fresh=Array.from(widget.menu.querySelectorAll('[role="option"]'));let index=fresh.indexOf(document.activeElement);
+      if(event.key==='Home')index=0;else if(event.key==='End')index=fresh.length-1;else if(!wasOpen)index=Math.max(0,fresh.findIndex(option=>option.getAttribute('aria-selected')==='true'));else index=Math.max(0,Math.min(fresh.length-1,index+(event.key==='ArrowDown'?1:-1)));
+      focusOption(index);
+    }
+  });
+}
+document.addEventListener('click', event => {if(!(/** @type {HTMLElement} */(event.target)).closest('.filter-select'))closeSelects()});
+document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('cancel',event=>{event.preventDefault();closeDialog(dialog)}));
+
+function notify(text){$('notice').textContent=text}
+function saveState(){const params=new URLSearchParams();for(const key of ['view','period','date','role','company','opportunity','sort','stage'])params.set(key,state[key]||'');try{history.replaceState(null,'','#'+params.toString())}catch(_){}}
+function openDialog(dialog){const pending=closingDialogs.get(dialog);closingDialogs.delete(dialog);pending?.cancel();closeSelects();if(!dialog.open){if(typeof dialog.showModal==='function')dialog.showModal();else dialog.setAttribute('open','')}animateElement(dialog,[{opacity:0,transform:'translateY(12px) scale(.98)'},{opacity:1,transform:'translateY(0) scale(1)'}],{duration:240})}
+function closeDialog(dialog){const close=()=>{if(typeof dialog.close==='function')dialog.close();else dialog.removeAttribute('open')};if(!dialog.open)return;closingDialogs.get(dialog)?.cancel();const animation=animateElement(dialog,[{opacity:1,transform:'translateY(0) scale(1)'},{opacity:0,transform:'translateY(6px) scale(.99)'}],{duration:130});if(!animation){close();return}closingDialogs.set(dialog,animation);animation.finished.then(()=>{if(closingDialogs.get(dialog)===animation){closingDialogs.delete(dialog);close()}},()=>{if(closingDialogs.get(dialog)===animation){closingDialogs.delete(dialog);close()}})}
+function detail(title,html,paths){state.selected=paths||[];$('detail-title').textContent=title;$('detail-body').innerHTML=html;$('detail-body').scrollTop=0;openDialog($('detail'));$('close-detail').focus({preventScroll:true})}
+function docDetails(doc){const m=doc.metadata;detail(m.title,`<p class="small muted">${E(TYPE[m.type]||m.type)} · ${E(m.updated_at||m.updated_on||m.prepared_on||m.practiced_on||m.recorded_on||m.occurred_on||m.evaluated_on||'未记录日期')}</p>${freshness(doc)}${m.round_id?'<p class="small muted">轮次：'+E(m.round_id)+(m.interview_on?' · 面试日期 '+E(m.interview_on):'')+'</p>':''}${body(doc)}${m.type==='stage-summary'?stageItemLinks(doc):''}${m.type==='jd'?interviewSection(m.role_id,m.company_id,m.opportunity_id):''}${m.type==='item'?'<section><h3>当前行动</h3>'+DATA.actions.filter(a=>a.metadata.item_id===m.id).map(actionCard).join('')+'</section><section><h3>实际进展</h3>'+DATA.logs.filter(l=>l.metadata.item_id===m.id).map(logCard).join('')+'</section>':''}${m.type==='action'?'<section><h3>实际进展</h3>'+DATA.logs.filter(l=>(l.metadata.action_ids||[]).includes(m.id)).map(logCard).join('')+'</section>':''}${sourceRow(doc)}${(m.sources||[]).length?(INTERVIEW_TYPES.includes(m.type)?'<details><summary class="small">引用来源 · '+m.sources.length+' 份</summary>':'<section><h3>引用来源</h3>')+m.sources.map(p=>`<p class="small">${sourceLink(p)}</p>`).join('')+(INTERVIEW_TYPES.includes(m.type)?'</details>':'</section>'):''}`,[doc.path])}
+function stageItemLinks(doc){const ids=doc.metadata.item_ids||[];return ids.length?'<section><h3>这段时间的事项</h3>'+ids.map(id=>{const item=DATA.items.find(d=>d.metadata.id===id);return item?`<p><button data-doc="${E(item.path)}">${E(item.metadata.title)}</button> <span class="pill">${E(STATUS[item.metadata.status]||item.metadata.status||'未记录状态')}</span></p>`:`<p class="small muted">${E(id)} · 当前未找到关联事项</p>`}).join('')+'</section>':''}
+function dependencyWarning(action){const m=action.metadata;if(!m.scheduled_for)return '';const conflict=(m.depends_on||[]).some(id=>{const parent=ACTIONS.get(id)?.metadata;return parent&&parent.status!=='done'&&parent.scheduled_for&&parent.scheduled_for>m.scheduled_for});return conflict?'<p class="attention">前置行动安排得更晚，需检查依赖或调整日期。</p>':''}
+function actionCard(doc){const m=doc.metadata;const logs=DATA.logs.filter(log=>(log.metadata.action_ids||[]).includes(m.id));const item=DATA.items.find(i=>i.metadata.id===m.item_id);return `<article class="item-card"><div class="row between"><div class="item-title">${E(m.title)}</div><span class="pill">${E(STATUS[m.status]||m.status||'待开始')}</span></div><p class="small muted">${E(item?item.metadata.title+' · ':'')}${m.scheduled_for?'安排 '+E(m.scheduled_for):'尚未安排日期'}${m.due_on?' · 截止 '+E(m.due_on):''}${m.minutes!=null?' · 预计 '+E(m.minutes)+' 分钟':''}${m.spent_minutes!=null?' · 实际 '+E(m.spent_minutes)+' 分钟':''}</p>${m.depends_on?.length?`<p class="small muted">前置行动：${m.depends_on.map(id=>E(ACTIONS.get(id)?.metadata.title||id)).join('、')}</p>`:''}${dependencyWarning(doc)}<div class="markdown preview">${E(doc.body)}</div>${logs.length?`<p class="small muted">已有 ${logs.length} 条实际记录；记录与能力证据分别确认。</p>`:''}<div class="source-row"><button class="small" data-doc="${E(doc.path)}">查看行动与来源</button><button class="small" data-request="${E(doc.path)}">请 Agent 调整</button></div></article>`}
+function logCard(doc){const m=doc.metadata;const label={record:'普通记录',candidate:'候选证据',confirmed:'已确认证据'}[m.evidence_status]||'普通记录';return `<article class="item-card"><div class="row between"><div class="item-title">${E(m.title)}</div><span class="pill">${E(label)}</span></div><p class="small muted">${E(m.recorded_on)} · ${E(TYPE[m.type])}</p><div class="markdown preview">${E(doc.body)}</div><div class="source-row"><button class="small" data-doc="${E(doc.path)}">查看记录</button>${sourceLink(doc.path)}</div></article>`}
+function pastOverview(){const past=DATA.documents.filter(d=>d.path.startsWith('past/'));return `<details style="margin-top:20px"><summary>来路与当前理解 · ${past.length} 份资料</summary>${past.length?past.map(d=>`<article class="item-card"><div class="row"><span class="pill">${E(TYPE[d.metadata.type]||d.metadata.type)}</span><button data-doc="${E(d.path)}">${E(d.metadata.title)}</button></div>${d.metadata.type==='portrait'?'<p class="small muted">暂定理解，可随时纠正；不能替代原始事实。</p>'+freshness(d):''}${sourceRow(d)}</article>`).join(''):'<p class="empty">尚无来路资料，可以从指定简历或一段经历开始。</p>'}</details>`}
+function itemCard(doc, archived=false){const m=doc.metadata;const actions=DATA.actions.filter(a=>a.metadata.item_id===m.id),done=actions.filter(a=>a.metadata.status==='done').length;return `<article class="item-card"><div class="row between"><div class="item-title">${E(m.title)}</div><span class="pill">${E(STATUS[m.status]||m.status||'进行中')}</span></div><p class="small muted">已完成 ${done} / ${actions.length} 项行动</p><div class="markdown preview">${E(doc.body)}</div><div class="source-row"><button data-doc="${E(doc.path)}">${archived?'回看这件事':'继续这件事'}</button>${sourceLink(doc.path)}</div></article>`}
+function recordDate(doc){return doc.metadata.recorded_on||doc.metadata.updated_on||doc.metadata.updated_at||''}
+function recentFirst(docs){return [...docs].sort((a,b)=>recordDate(b).localeCompare(recordDate(a))||a.path.localeCompare(b.path))}
+function savedRecordCard(doc){const m=doc.metadata,transition={review:'阶段复盘',leaving:'离职收束',offer:'Offer 选择',joining:'新阶段开始','direction-change':'方向调整'}[m.transition];return `<article class="item-card"><div class="row between"><button data-doc="${E(doc.path)}">${E(m.title)}</button><span class="pill">${E(transition||TYPE[m.type]||m.type)}</span></div><p class="small muted">${E(m.recorded_on||'未记录日期')}</p><div class="markdown preview">${E(doc.body)}</div>${freshness(doc)}<div class="source-row"><button class="small" data-doc="${E(doc.path)}">查看记录与引用</button>${sourceLink(doc.path)}</div></article>`}
+function growthHistory(){const archived=DATA.items.filter(d=>['done','paused'].includes(d.metadata.status));const notes=recentFirst(DATA.notes||DATA.documents.filter(d=>d.metadata.type==='note'));const stages=recentFirst(DATA.stages||DATA.documents.filter(d=>d.metadata.type==='stage-summary'));const logs=recentFirst(DATA.logs);const months=[...new Set(logs.map(d=>(d.metadata.recorded_on||'').slice(0,7)||'日期未记录'))];return `<details id="growth-history" style="margin-top:20px"><summary>回看积累 · ${archived.length} 件已完成或暂停 · ${logs.length} 条成长记录</summary><section><h3>已完成与暂停</h3>${archived.length?archived.map(d=>itemCard(d,true)).join(''):'<p class="small muted">完成或暂停的事项会留在这里。</p>'}</section><section><h3>阶段回看</h3>${stages.length?stages.map(savedRecordCard).join(''):'<p class="small muted">尚无阶段摘要。可以请 Agent 一起回看这段时间。</p>'}</section><section><h3>暂存的想法</h3>${notes.length?notes.map(savedRecordCard).join(''):'<p class="small muted">想法可以独立保存，等需要时再决定下一步。</p>'}</section><details id="all-growth-logs"><summary>全部学习与工作记录 · ${logs.length} 条</summary>${months.map(month=>`<details><summary>${E(month)} · ${logs.filter(d=>(d.metadata.recorded_on||'').startsWith(month)).length} 条</summary>${logs.filter(d=>(d.metadata.recorded_on||'').slice(0,7)===month).map(logCard).join('')}</details>`).join('')||'<p class="small muted">尚无记录。</p>'}</details></details>`}
+function overview(){const today=DATA.actions.filter(d=>d.metadata.scheduled_for===DATA.as_of);const active=DATA.items.filter(d=>!['done','paused'].includes(d.metadata.status));const logs=recentFirst(DATA.logs).slice(0,3);$('view-overview').innerHTML=`<div class="section-head"><div><h2>从眼前的一步继续</h2><p class="muted small">${E(DATA.as_of)} · ${active.length} 件进行中的事 · ${today.length} 项今日行动</p></div><button data-jump="plan">查看计划</button></div><div class="grid"><section class="panel"><h3>持续事项</h3>${active.length?active.map(doc=>itemCard(doc)).join(''):'<p class="empty">尚无进行中的事项。可以把一个项目、学习或探索交给 Agent 整理。</p>'}</section><section class="panel"><h3>今日行动</h3>${today.length?today.map(actionCard).join(''):'<p class="empty">今天尚未安排。可先查看本周承诺，再决定下一步。</p>'}</section></div><div class="section-head"><div><h2>最近留下的进展</h2><p class="small muted">完成任务后仍可只留下普通记录。</p></div></div><section class="panel">${logs.length?logs.map(logCard).join(''):'<p class="empty">尚未记录学习或工作进展。</p>'}</section>${growthHistory()}${pastOverview()}${DATA.warnings.length?`<details><summary class="small muted">${DATA.warnings.length} 项资料需留意</summary>${DATA.warnings.map(w=>`<p class="small">${E(typeof w==='string'?w:w.message)} ${w.path?sourceLink(w.path):''}</p>`).join('')}</details>`:''}`}
+function bounds(){const d=parseDate(state.date),y=d.getUTCFullYear(),m=d.getUTCMonth();if(state.period==='daily')return [iso(d),iso(d)];if(state.period==='weekly'){const start=plus(d,-((d.getUTCDay()+6)%7));return [iso(start),iso(plus(start,6))]}if(state.period==='monthly')return [iso(new Date(Date.UTC(y,m,1,12))),iso(new Date(Date.UTC(y,m+1,0,12)))];return [`${y}-01-01`,`${y}-12-31`]}
+function daysCalendar(start,count,month){let html='<div class="calendar-shell"><div class="calendar '+(state.period==='weekly'?'week':'')+'">'+['一','二','三','四','五','六','日'].map(day=>`<div class="weekday">周${day}</div>`).join('');for(let i=0;i<count;i++){const day=plus(parseDate(start),i),date=iso(day);const acts=DATA.actions.filter(a=>a.metadata.scheduled_for===date);const logs=DATA.logs.filter(log=>log.metadata.recorded_on===date);html+=`<div class="day${month!=null&&day.getUTCMonth()!==month?' outside':''}${date===DATA.as_of?' today':''}"><div class="day-number">${E(state.period==='weekly'?date.slice(5):day.getUTCDate())}${date===DATA.as_of?' · 快照日':''}</div>${acts.map(a=>`<button class="calendar-action" data-doc="${E(a.path)}">${a.metadata.status==='done'?'✓ ':''}${E(a.metadata.title)}</button>`).join('')}${logs.length?`<div class="small muted">${logs.length} 条实际记录</div>`:''}</div>`}return html+'</div></div>'}
+function plan(){const [start,end]=bounds(),d=parseDate(state.date);$('plan-date').value=state.date;buttons('[data-period]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.period===state.period)));const actions=DATA.actions.filter(a=>a.metadata.scheduled_for&&a.metadata.scheduled_for>=start&&a.metadata.scheduled_for<=end).sort((a,b)=>a.metadata.scheduled_for.localeCompare(b.metadata.scheduled_for)||a.path.localeCompare(b.path));const logs=DATA.logs.filter(log=>log.metadata.recorded_on>=start&&log.metadata.recorded_on<=end);const plans=DATA.plans.filter(p=>p.metadata.period===state.period&&p.metadata.start_date<=end&&p.metadata.end_date>=start);let calendar='';if(state.period==='weekly')calendar=daysCalendar(start,7);if(state.period==='monthly'){const first=parseDate(start);calendar=daysCalendar(iso(plus(first,-((first.getUTCDay()+6)%7))),42,d.getUTCMonth())}if(state.period==='yearly'){calendar='<div class="year-grid">'+Array.from({length:12},(_,m)=>{const prefix=`${d.getUTCFullYear()}-${String(m+1).padStart(2,'0')}`;const acts=DATA.actions.filter(a=>(a.metadata.scheduled_for||'').startsWith(prefix));return `<button class="month-card" data-month="${prefix}-01"><strong>${m+1} 月</strong><span class="small muted">${acts.length} 项行动 · ${acts.filter(a=>a.metadata.status==='done').length} 项完成</span></button>`}).join('')+'</div>'}const minutes=actions.reduce((sum,a)=>sum+(a.metadata.minutes||0),0),unknown=actions.filter(a=>a.metadata.minutes==null).length;$('plan-content').innerHTML=`<div class="section-head"><div><h2>${E(start===end?start:start+' — '+end)}</h2><p class="small muted">${actions.length} 项已安排行动 · 已知预计 ${minutes} 分钟${unknown?' · '+unknown+' 项时长待定':''}</p></div></div>${calendar}<section class="panel"><h3>${{daily:'今日行动',weekly:'本周行动',monthly:'本月行动',yearly:'全年行动'}[state.period]}</h3>${actions.length?actions.map(actionCard).join(''):'<p class="empty">这个时段尚未安排实际行动。</p>'}</section><div class="grid" style="margin-top:20px"><section class="panel"><h3>这一时段的计划说明</h3>${plans.length?plans.map(p=>`<article class="item-card"><div class="item-title">${E(p.metadata.title)}</div>${body(p)}<p class="small muted">引用 ${p.metadata.action_ids?.length||0} 项行动</p>${sourceRow(p)}</article>`).join(''):'<p class="empty">尚无对应的计划说明。</p>'}</section><section class="panel"><h3>实际学习与工作记录</h3>${logs.length?logs.map(logCard).join(''):'<p class="empty">这个时段尚无实际记录。</p>'}</section></div>${DATA.actions.some(a=>!a.metadata.scheduled_for)?`<details style="margin-top:20px"><summary>待安排的行动</summary>${DATA.actions.filter(a=>!a.metadata.scheduled_for).map(actionCard).join('')}</details>`:''}`;animateElement($('plan-content'),[{opacity:.5,transform:'translateY(4px)'},{opacity:1,transform:'translateY(0)'}],{duration:200})}
+function roleSort(a,b){if(state.sort==='priority')return b.priority-a.priority||a.id.localeCompare(b.id);const rank=r=>!r.assessment||r.known===0?2:r.needs_review?1:0;const diff=rank(a)-rank(b);if(diff)return diff;if(state.sort==='information'){const av=a.total?a.known/a.total:-1,bv=b.total?b.known/b.total:-1;return bv-av||a.id.localeCompare(b.id)}return (b.fit_sort_value??-1)-(a.fit_sort_value??-1)||a.id.localeCompare(b.id)}
+function roles(){
+ const sorted=[...DATA.roles].sort(roleSort);$('role-sort').value=state.sort;
+ buttons('[data-sort]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.sort===state.sort)));
+ const html=sorted.length?'<div class="role-track'+(sorted.length<3?' focused':'')+'" aria-label="职业方向，横向滚动">'+sorted.map((role,index)=>{
+  const a=role.assessment,c=role.counts;
+  const orbit='<svg viewBox="0 0 72 48" fill="none" aria-hidden="true"><ellipse cx="36" cy="24" rx="28" ry="14" stroke="currentColor" stroke-opacity=".26" transform="rotate(-25 36 24)"/><path d="M12 35 36 24 59 13" stroke="currentColor" stroke-opacity=".2"/><circle cx="36" cy="24" r="5" fill="currentColor"/><circle cx="12" cy="35" r="3" fill="currentColor" fill-opacity=".4"/><circle cx="59" cy="13" r="3" fill="currentColor" fill-opacity=".65"/></svg>';
+  const bars=a?'<div class="role-progress" aria-hidden="true">'+['supported','partial','gap','unknown'].map(status=>`<span class="${status}" style="flex:${Math.max(c[status],0)}"></span>`).join('')+'</div>':'';
+  return `<button class="role-card" data-role="${E(role.id)}" data-motion-key="role:${E(role.id)}"><div class="row between"><span class="role-orbit">${orbit}</span><span class="role-rank">${String(index+1).padStart(2,'0')}</span></div><h3>${E(role.goal.metadata.title)}</h3><p class="role-meta"><span class="pill">${E(({exploring:'探索中',adopted:'已采纳',paused:'已暂停'})[role.goal.metadata.decision_status]||'尚未确认')}</span><span class="small muted">偏好 ${E(role.priority)} / 5</span></p>${bars}${a?`<div class="counts small">已支持 ${c.supported} · 部分支持 ${c.partial}<br>明确差距 ${c.gap} · 尚未判断 ${c.unknown}</div><p class="small">资料已判断 ${role.known} / ${role.total} 条要求${role.known===0?' · 资料不足，待判断':''}</p>`:'<p class="counts muted small">还未评估这个方向。<br>可以先探索，不急着确定要求。</p>'}${a?freshness(a):''}<span class="role-open small">查看方向 <span aria-hidden="true">↗</span></span></button>`;
+ }).join('')+'</div>':'<p class="empty">尚无未来方向。目标可以先于 JD 建立。</p>';
+ replaceWithMotion($('roles-content'),html);saveState();
+}
+
+function resumeLinks(roleId,companyId,opportunityId){const versions=(DATA.resumes||[]).filter(v=>v.scope.role_id===roleId&&(companyId===undefined||v.scope.company_id===companyId)&&(opportunityId===undefined||v.scope.opportunity_id===opportunityId));return `<section><h3>已有简历版本</h3><p class="small muted">历史版本未复核；新资料不会自动改写已生成的内容。打开版本后请 Agent 检查当前性。</p>${versions.length?versions.map(v=>`<article class="item-card"><div class="item-title">${E(v.scope.company_id?'公司机会版 · '+v.scope.company_id:'岗位通用版')}</div><p class="small muted">${E(v.created_at)} · ${E(v.template)}</p><div class="source-row">${v.html_href?`<a href="${E(v.html_href)}">打开 HTML 简历</a>`:'<span class="small attention">历史 HTML 当前缺失，需核对</span>'}${v.pdf_status?.status==='verified'&&v.pdf_href?`<a href="${E(v.pdf_href)}">打开已核验 PDF</a>`:v.pdf_status?.status==='unverified'?'<span class="small muted">已有 PDF 尚未核验</span>':v.pdf_status?.status==='tampered'?'<span class="small attention">已有 PDF 完整性异常，需检查</span>':''}</div><p class="small muted">${E(v.relative_path)}</p></article>`).join(''):'<p class="muted">这个范围尚无已生成版本。</p>'}</section>`}
+const INTERVIEW_TYPES=['interview-story','interview-prep','interview-practice'];
+function interviewDocuments(roleId,companyId=null,opportunityId=null){return DATA.documents.filter(d=>INTERVIEW_TYPES.includes(d.metadata.type)&&d.metadata.role_id===roleId&&(d.metadata.company_id||null)===companyId&&(d.metadata.opportunity_id||null)===opportunityId).sort((a,b)=>interviewDate(b).localeCompare(interviewDate(a))||b.path.localeCompare(a.path))}
+function interviewDate(doc){const m=doc.metadata;return m.prepared_on||m.practiced_on||m.updated_on||''}
+function interviewCards(documents){return documents.map(doc=>{const m=doc.metadata;const file=href(doc.path)?`<a href="${E(href(doc.path))}" title="${E(doc.path)}">源文件 ↗</a>`:sourceLink(doc.path);return `<article class="item-card"><div class="row between"><button data-doc="${E(doc.path)}">${E(m.title)}</button><span class="pill">${E(TYPE[m.type])}</span></div><p class="small muted">${E(interviewDate(doc)||'未记录日期')}${m.round_id?' · '+E(m.round_label||m.round_id):''}${m.interview_on?' · 面试 '+E(m.interview_on):''}</p>${freshness(doc)}<div class="source-row"><button class="small" data-request="${E(doc.path)}">请 Agent 调整此材料</button>${file}</div></article>`}).join('')}
+function interviewSection(roleId,companyId=null,opportunityId=null){const common=interviewDocuments(roleId),scoped=companyId?interviewDocuments(roleId,companyId,opportunityId):[];return `<section class="interview-section" data-interview-role="${E(roleId)}"><div class="row between"><h3>面试准备</h3><button class="small" data-prepare-role="${E(roleId)}"${companyId?' data-prepare-company="'+E(companyId)+'" data-prepare-opportunity="'+E(opportunityId)+'"':''}>请 Agent 准备面试</button></div>${companyId?(scoped.length?interviewCards(scoped):'<p class="small muted">本机会尚无面试材料。</p>'):''}<details${companyId?'':' open'}><summary class="small">可复用的岗位材料 · ${common.length} 份</summary>${common.length?interviewCards(common):'<p class="small muted">尚无通用材料，可以先整理真实经历。</p>'}</details></section>`}
+function prepareInterview(target){const roleId=target.dataset.prepareRole,companyId=target.dataset.prepareCompany,opportunityId=target.dataset.prepareOpportunity;const paths=DATA.documents.filter(d=>d.metadata.role_id===roleId&&(d.metadata.type==='goal'||(['jd','application'].includes(d.metadata.type)&&companyId&&d.metadata.company_id===companyId&&d.metadata.opportunity_id===opportunityId))).map(d=>d.path);request(paths,'请结合已选岗位的 JD、相关过往经历和当前真实学习成果，准备面试材料。范围：方向 '+roleId+(companyId?'；公司 '+companyId+'；机会 '+opportunityId:'；岗位通用材料')+'。先按需读取，区分事实、学习中和待核实；如需确定面试轮次请向我澄清。不要自动改投递阶段、创建日程或把练习当成能力证据。')}
+function roleDetails(id){const role=DATA.roles.find(r=>r.id===id);if(!role)return;const files=role.documents.map(p=>DOCS.get(p)).filter(Boolean);const jds=files.filter(d=>d.metadata.type==='jd');const a=role.assessment;const criteria=a?.metadata.criteria||[];detail(role.goal.metadata.title,`<section><h3>方向与想法</h3>${body(role.goal)}${sourceRow(role.goal)}</section><section><h3>匹配依据</h3>${a?`<p class="small muted">评估于 ${E(a.metadata.evaluated_on)} · 资料已判断 ${role.known} / ${role.total}</p>${freshness(a)}${criteria.map(c=>`<article class="item-card"><div class="row between"><strong>${E(c.requirement)}</strong><span class="pill">${E({supported:'已支持',partial:'部分支持',gap:'明确差距',unknown:'尚未判断'}[c.status])}</span></div><p>${E(c.note)}</p>${c.evidence.length?'<div class="source-row">'+c.evidence.map(sourceLink).join(' ')+'</div>':''}</article>`).join('')}${body(a)}${sourceRow(a)}`:'<p class="muted">尚无判断。可先补充目标要求或相关经历。</p>'}</section><section><h3>公司与 JD 文件</h3>${jds.length?jds.map(doc=>`<article class="item-card"><div class="item-title">${E(doc.metadata.title.startsWith(doc.metadata.company_name)?doc.metadata.title:doc.metadata.company_name+' · '+doc.metadata.title)}</div><p class="small muted">收集于 ${E(doc.metadata.collected_on)} · ${E(doc.metadata.opportunity_id)}</p><div class="markdown preview">${E(doc.body)}</div><div class="source-row"><button data-doc="${E(doc.path)}">查看 JD</button>${sourceLink(doc.path)}</div></article>`).join(''):'<p class="muted">尚无公司或 JD，仍可继续探索这个方向。</p>'}</section>${interviewSection(id)}${resumeLinks(id)}<section><h3>相关文件</h3>${files.filter(d=>!['jd','assessment',...INTERVIEW_TYPES].includes(d.metadata.type)).map(doc=>`<p class="small">${E(TYPE[doc.metadata.type]||doc.metadata.type)} · <button data-doc="${E(doc.path)}">${E(doc.metadata.title)}</button> ${sourceLink(doc.path)}</p>`).join('')||'<p class="muted">尚无其他文件。</p>'}</section>`,[role.goal.path,...role.documents])}
+const stageLabel=stage=>STAGES.find(s=>s[0]===stage)?.[1]||stage;
+const opportunityTitle=metadata=>DATA.roles.find(role=>role.id===metadata.role_id)?.goal.metadata.title||metadata.title;
+function optionList(values,selected,all){return `<option value="">${E(all)}</option>`+values.map(([value,label])=>`<option value="${E(value)}"${value===selected?' selected':''}>${E(label)}</option>`).join('')}
+function applicationFilters(){const apps=DATA.documents.filter(d=>['application','jd'].includes(d.metadata.type)).map(d=>d.metadata);const roleIds=[...new Set([...DATA.roles.map(r=>r.id),...apps.map(m=>m.role_id)])];if(state.role&&!roleIds.includes(state.role))state.role='';const names=new Map(DATA.roles.map(r=>[r.id,r.goal.metadata.title]));$('application-role').innerHTML=optionList(roleIds.map(id=>[id,names.get(id)||id]),state.role,'全部方向');const scoped=apps.filter(m=>!state.role||m.role_id===state.role),companies=[...new Map(scoped.map(m=>[m.company_id,m.company_name])).entries()];if(state.company&&!companies.some(c=>c[0]===state.company))state.company='';$('application-company').innerHTML=optionList(companies,state.company,'全部公司');const opportunityApps=scoped.filter(m=>!state.company||m.company_id===state.company),opportunities=[...new Map(opportunityApps.map(m=>[m.opportunity_id,m.title])).entries()];if(state.opportunity&&!opportunities.some(o=>o[0]===state.opportunity))state.opportunity='';$('application-opportunity').innerHTML=optionList(opportunities,state.opportunity,'全部机会')}
+function filteredApplications(includeStage=true){return DATA.applications.filter(d=>{const m=d.metadata;return (!state.role||m.role_id===state.role)&&(!state.company||m.company_id===state.company)&&(!state.opportunity||m.opportunity_id===state.opportunity)&&(!includeStage||!state.stage||m.stage===state.stage)})}
+function applications(){
+ applicationFilters();syncSelects();
+ const available=filteredApplications(false),apps=filteredApplications();
+ $('stage-filters').innerHTML=[['','全部阶段'],...STAGES].filter(([id])=>!id||id===state.stage||available.some(a=>a.metadata.stage===id)).map(([id,label])=>`<button class="filter-chip" data-stage="${id}" aria-pressed="${String(state.stage===id)}">${E(label)}<span class="chip-count">${id?available.filter(a=>a.metadata.stage===id).length:available.length}</span></button>`).join('');
+ const isFiltered=state.role||state.company||state.opportunity||state.stage;
+ $('filter-summary').innerHTML=`<span>${isFiltered?'筛选到':'当前共有'} <strong>${apps.length}</strong> 个机会</span>${isFiltered?'<button class="filter-clear" data-clear-filters>清除筛选 <span aria-hidden="true">×</span></button>':''}`;
+ const html=apps.length?`<div class="pipeline">${STAGES.filter(([id])=>apps.some(a=>a.metadata.stage===id)).map(([id,label])=>{const stageApps=apps.filter(a=>a.metadata.stage===id);return `<section class="stage"><h3><span><i class="stage-dot" aria-hidden="true"></i>${E(label)}</span><span class="muted">${stageApps.length}</span></h3>${stageApps.map(doc=>`<button class="application-card" data-application="${E(doc.path)}" data-motion-key="application:${E(doc.path)}"><div class="row between"><strong>${E(doc.metadata.company_name)}</strong><span class="card-arrow" aria-hidden="true">↗</span></div><p>${E(opportunityTitle(doc.metadata))}</p><p class="small muted">下一步：${E(doc.metadata.next_action||'尚未记录')}</p><p class="small muted">更新于 ${E(doc.metadata.updated_on)}</p></button>`).join('')}</section>`}).join('')}</div>`:'<div class="empty"><span class="empty-mark" aria-hidden="true">◌</span><p>尚无符合筛选的投递记录。</p><p class="small muted">只有实际保存的节点才会出现在这里。</p></div>';
+ replaceWithMotion($('applications-content'),html);saveState();
+}
+
+function eventResume(resume){const r=resume||{status:'not_recorded'};if(r.status==='not_recorded')return '<p class="small muted event-resume">本次使用的简历：未记录</p>';const label=r.artifact==='resume.pdf'?'PDF':'HTML';if(r.status==='verified'&&r.href){let safe=false;try{const url=new URL(r.href);safe=url.protocol==='file:'&&!url.host&&!url.username&&!url.password}catch{}if(safe)return `<p class="small event-resume">本次使用：<a href="${E(r.href)}">${E(label)} · ${E(r.version.split('/').pop())}</a></p>`}return `<p class="small attention event-resume">${E(r.message||'本次使用的简历需核对')}${r.version?' · '+E(r.version.split('/').pop()):''}</p>`}
+function applicationDetails(path){const doc=DOCS.get(path);if(!doc)return;const m=doc.metadata,history=DATA.application_events?.[path]||(m.history||[]).map(h=>({...h,resume:{status:'not_recorded'}}));detail(m.company_name+' · '+opportunityTitle(m),`<p><span class="pill">${E(stageLabel(m.stage))}</span></p><p>下一步：${E(m.next_action||'尚未记录')}</p><p class="small muted">更新于 ${E(m.updated_on)}</p><details><summary class="small">已记录的历史 · ${history.length} 条</summary>${history.length?'<ol class="history">'+history.map(h=>`<li><time>${E(h.date)}</time><p><strong>${E(stageLabel(h.stage))}</strong></p><p>${E(h.note)}</p>${eventResume(h.resume)}</li>`).join('')+'</ol>':'<p class="muted">尚未记录历史；不补造此前节点。</p>'}${body(doc)}${sourceRow(doc)}</details>${interviewSection(m.role_id,m.company_id,m.opportunity_id)}${resumeLinks(m.role_id,m.company_id,m.opportunity_id)}<section><h3>本机会相关文件</h3>${DATA.documents.filter(d=>d.path!==path&&!INTERVIEW_TYPES.includes(d.metadata.type)&&d.metadata.role_id===m.role_id&&d.metadata.company_id===m.company_id&&d.metadata.opportunity_id===m.opportunity_id).map(d=>`<p class="small">${E(TYPE[d.metadata.type]||d.metadata.type)} · ${sourceLink(d.path)}</p>`).join('')||'<p class="muted">尚无其他文件。</p>'}</section>`,[path,...(m.sources||[])])}
+function view(name){const previous=state.view;state.view=name;closeSelects();buttons('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===name)));for(const key of ['overview','plan','roles','applications'])$('view-'+key).hidden=key!==name;if(name==='overview')overview();if(name==='plan')plan();if(name==='roles')roles();if(name==='applications')applications();if(previous!==name)animateElement($('view-'+name),[{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:220});moveTabIndicator();saveState();notify('')}
+
+function requestPaths(){if(state.selected.length)return state.selected;if(state.view==='applications')return filteredApplications().map(d=>d.path);if(state.view==='plan'){const [start,end]=bounds();return DATA.actions.filter(d=>d.metadata.scheduled_for>=start&&d.metadata.scheduled_for<=end).map(d=>d.path)}return []}
+function agentText(){const paths=requestPaths();return `请在本地履迹工作区 ${DATA.workspace_path} 处理以下请求。\n快照时间：${DATA.generated_at}；查看日期：${state.date}；视图：${state.view}${state.view==='plan'?' / '+state.period:''}。\n${state.view==='applications'?'当前筛选：方向 '+(state.role||'全部')+'；公司 '+(state.company||'全部')+'；机会 '+(state.opportunity||'全部')+'；阶段 '+(state.stage||'全部')+'。匹配 '+filteredApplications().length+' 个机会；不要扩大到未选范围。\n':''}${paths.length?'先只读这些实际文件：\n'+paths.map(p=>DATA.source_links[p]?.absolute_path||p).join('\n'):(state.view==='applications'?'当前筛选没有机会，不要自动改动其他记录；可协助我检查筛选条件。':'先读取工作区索引，按本轮需要选择最少资料。')}\n${$('agent-note').value.trim()||'请帮助我检查当前安排，提出可选择的调整。'}\n先重读来源并展示具体修改草稿与影响，取得我对这份草稿的确认后再保存 Markdown；随后重新生成快照。页面本身尚未保存任何修改。`}
+function request(paths,note=''){state.selected=paths||[];$('agent-note').value=note;$('copy-status').textContent='';$('agent-context').textContent=agentText();openDialog($('agent-dialog'));$('agent-note').focus()}
+document.addEventListener('click',event=>{const target=/** @type {HTMLElement} */(event.target).closest('button');if(!target)return;if(target.dataset.view){state.selected=[];view(target.dataset.view)}else if(target.dataset.jump){state.selected=[];view(target.dataset.jump)}else if(target.hasAttribute('data-sort')){$('role-sort').value=target.dataset.sort;$('role-sort').dispatchEvent(new Event('change',{bubbles:true}))}else if(target.hasAttribute('data-stage')){state.selected=[];state.stage=target.dataset.stage;applications();Array.from(buttons('[data-stage]')).find(button=>button.dataset.stage===state.stage)?.focus({preventScroll:true})}else if(target.hasAttribute('data-clear-filters')){clearFilters()}else if(target.dataset.prepareRole){prepareInterview(target)}else if(target.dataset.doc){docDetails(DOCS.get(target.dataset.doc))}else if(target.dataset.request){request([target.dataset.request])}else if(target.dataset.role){roleDetails(target.dataset.role)}else if(target.dataset.application){applicationDetails(target.dataset.application)}else if(target.dataset.period){state.period=target.dataset.period;plan();saveState()}else if(target.dataset.month){state.period='monthly';state.date=target.dataset.month;plan();saveState()}});
+$('close-detail').addEventListener('click',()=>closeDialog($('detail')));$('close-agent').addEventListener('click',()=>closeDialog($('agent-dialog')));
+$('ask-agent').addEventListener('click',()=>request($('detail').open?state.selected:[]));
+$('agent-note').addEventListener('input',()=>{$('agent-context').textContent=agentText()});
+$('copy-context').addEventListener('click',async()=>{try{if(!navigator.clipboard?.writeText)throw Error('clipboard unavailable');await navigator.clipboard.writeText(agentText());$('copy-status').textContent='已复制，请粘贴给当前 Agent。'}catch(_){const range=document.createRange();range.selectNodeContents($('agent-context'));const selection=getSelection();selection.removeAllRanges();selection.addRange(range);$('copy-status').textContent='当前宿主不允许自动复制，已选中上下文，请按系统复制快捷键。'}});
+$('snapshot-info').addEventListener('click',()=>detail('快照信息',`<dl class="facts"><dt>工作区</dt><dd>${E(DATA.workspace_path)}</dd><dt>身份</dt><dd>${E(DATA.workspace_id)}</dd><dt>生成时间</dt><dd>${E(DATA.generated_at)}</dd><dt>查看基准</dt><dd>${E(DATA.as_of)}</dd><dt>资料数</dt><dd>${DATA.documents.length} 份 Markdown</dd></dl><p class="small muted">本页无法检测生成之后的外部修改。重新生成才能读取最新资料；生成失败会保留上一次成功快照。</p><h3>源文件与本次版本</h3>${DATA.documents.map(d=>`<details><summary>${E(d.metadata.title)} · ${E(TYPE[d.metadata.type]||d.metadata.type)}</summary>${sourceRow(d)}<p class="small muted">${E(d.revision)}</p>${freshness(d)}</details>`).join('')}`,[]));
+$('plan-date').addEventListener('change',event=>{if(event.target.value){state.date=event.target.value;plan();saveState()}});
+for(const [id,direction] of /** @type {[string,number][]} */([['previous-period',-1],['next-period',1]]))$(id).addEventListener('click',()=>{const d=parseDate(state.date);if(state.period==='daily')state.date=iso(plus(d,direction));if(state.period==='weekly')state.date=iso(plus(d,7*direction));if(state.period==='monthly')state.date=iso(new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth()+direction,1,12)));if(state.period==='yearly')state.date=iso(new Date(Date.UTC(d.getUTCFullYear()+direction,0,1,12)));plan();saveState()});
+$('today').addEventListener('click',()=>{state.date=DATA.as_of;plan();saveState()});
+$('role-sort').addEventListener('change',event=>{state.sort=event.target.value;roles()});
+for(const [id,key] of [['application-role','role'],['application-company','company'],['application-opportunity','opportunity']])$(id).addEventListener('change',event=>{state[key]=event.target.value;if(key==='role'){state.company='';state.opportunity=''}if(key==='company')state.opportunity='';applications();saveState()});
+function clearFilters(){state.role='';state.company='';state.opportunity='';state.stage='';state.selected=[];applications();saveState();selectWidgets.get('application-role')?.trigger.focus()}
+$('clear-filters').addEventListener('click',clearFilters);
+$('snapshot-label').textContent=parseDate(DATA.as_of).toLocaleDateString('zh-CN',{month:'long',day:'numeric',weekday:'long',timeZone:'UTC'})+' · 本地快照';$('snapshot-label').title='生成于 '+DATA.generated_at;
+for(const [id,label] of [['application-role','方向'],['application-company','公司'],['application-opportunity','机会']])enhanceSelect(id,label);
+$('role-sort').hidden=true;$('role-sort').closest('label').hidden=true;
+function restoreFromHash(){const params=new URLSearchParams(location.hash.slice(1));for(const key of ['view','period','date','role','company','opportunity','sort','stage'])if(params.has(key))state[key]=params.get(key);if(!['overview','plan','roles','applications'].includes(state.view))state.view='overview';if(!['daily','weekly','monthly','yearly'].includes(state.period))state.period='daily';if(!['fit','information','priority'].includes(state.sort))state.sort='fit';if(!STAGES.some(s=>s[0]===state.stage))state.stage='';if(!/^\d{4}-\d{2}-\d{2}$/.test(state.date)||Number.isNaN(parseDate(state.date).valueOf())||iso(parseDate(state.date))!==state.date)state.date=DATA.as_of;state.selected=[];view(state.view)}
+window.addEventListener('hashchange',restoreFromHash);window.addEventListener('popstate',restoreFromHash);
+syncSelects();view(state.view);
+})();
+</script>
+</body>
+</html>
