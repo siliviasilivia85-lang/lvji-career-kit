@@ -4,7 +4,6 @@
 
 **Convierte tu agente en un asesor de desarrollo profesional que conecte tu experiencia, las acciones de hoy y tus próximos rumbos.**
 
-![LüJi: ilustración conceptual de un agente que conecta la experiencia pasada, las acciones presentes y los rumbos futuros](assets/readme-overview.png)
 
 ```text
 Instala lvji-career-kit desde https://github.com/siliviasilivia85-lang/lvji-career-kit y ayúdame a ordenar una experiencia.

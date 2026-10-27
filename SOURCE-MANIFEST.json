@@ -20,8 +20,8 @@
     {
       "path": "ASSETS.md",
       "source": "luji-career-kit/ASSETS.md",
-      "sha256": "ed5b85aee4b07540e71ed798b411792450ad0571dc58fb40bc97a4c70e56bba5",
-      "bytes": 4893
+      "sha256": "ae1a24647dc98aa9bbca57928f0cd9454bbe40841c1ab717676628e2150556ff",
+      "bytes": 4336
     },
     {
       "path": "LICENSE",
@@ -32,32 +32,32 @@
     {
       "path": "README.en.md",
       "source": "luji-career-kit/README.en.md",
-      "sha256": "9e38a5633e4911adab44cccc2fd2d2ac19718e363064bc00d68f50ca71ced4fd",
-      "bytes": 14984
+      "sha256": "6e3246140927998dbc09741a92ca0899ac9ea44957d0063045baf7a4aa36aa6a",
+      "bytes": 14845
     },
     {
       "path": "README.es.md",
       "source": "luji-career-kit/README.es.md",
-      "sha256": "48d8be351a7a032971fe5f6d24855b60c053dd7054cd8c0f287967fb8d5f3d74",
-      "bytes": 21716
+      "sha256": "de657be04945757a8a79d05e7697dbcfa76a17f98d066950eacf8bfcc8e607fb",
+      "bytes": 21562
     },
     {
       "path": "README.ja.md",
       "source": "luji-career-kit/README.ja.md",
-      "sha256": "98e2d2a7a95bd6504943a85eedb5216f9645111bd778f9ae665b6f75acfb4ca6",
-      "bytes": 24090
+      "sha256": "d5b388b0b3017adf603f2a19b20953e07063536e613d11d52d74890a4bbb5fe2",
+      "bytes": 23970
     },
     {
       "path": "README.ko.md",
       "source": "luji-career-kit/README.ko.md",
-      "sha256": "41e49ac5e84f98d28c7abf500c37fbc5ac1d9d7ca274498e69f13ca9066d7a9a",
-      "bytes": 23449
+      "sha256": "c30b5bcfaf1786f4b42a38efd9fc95e700de80374d363e98f856c7a6e0eb0609",
+      "bytes": 23312
     },
     {
       "path": "README.md",
       "source": "luji-career-kit/README.md",
-      "sha256": "7f2bd43fa5ede8beaa99b74007771892ee310e0a52722c2bd7ab5ca004281072",
-      "bytes": 16513
+      "sha256": "a9731f367af1df61789fa44bad9cacc2931e25b8793cb2b7ed74e4968b2d3080",
+      "bytes": 16401
     },
     {
       "path": "SKILL.md",
@@ -118,18 +118,6 @@
       "source": "luji-career-kit/assets/md_workspace.test.cjs",
       "sha256": "851ee55325b483d60af242163ff04acee06821d6c394153e5735fb2997e60b91",
       "bytes": 42699
-    },
-    {
-      "path": "assets/readme-overview.png",
-      "source": "luji-career-kit/assets/readme-overview.png",
-      "sha256": "ba2cde1078e834048889b3e2b4890f6cce3703808686433f17744b99216fb2df",
-      "bytes": 1635790
-    },
-    {
-      "path": "assets/readme-overview.prompt.md",
-      "source": "luji-career-kit/assets/readme-overview.prompt.md",
-      "sha256": "d1aca60f436cee75a1bd3e373d759d1b6801f45354876518c5cf25610f9cc196",
-      "bytes": 4016
     },
     {
       "path": "assets/resume_gallery.html",

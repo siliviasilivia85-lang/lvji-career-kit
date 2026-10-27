@@ -4,7 +4,6 @@
 
 **使い慣れたAgentを、経験・今日の行動・これからの方向をつなぐ、あなたのキャリア相談相手に。**
 
-![LüJi：Agentが過去の蓄積、現在の行動、未来の方向をつなぐ概念図](assets/readme-overview.png)
 
 ```text
 https://github.com/siliviasilivia85-lang/lvji-career-kit からこのSkillをインストールして有効にし、一つの経験を一緒に整理してください。

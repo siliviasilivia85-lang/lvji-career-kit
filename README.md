@@ -4,7 +4,6 @@
 
 **让你的 Agent 成为专属职业发展顾问，把过去的积累、今天的行动和未来的目标连成一条成长路径。**
 
-![履迹：Agent连接过去积累、现在行动与未来方向的概念说明图](assets/readme-overview.png)
 
 ```text
 请从 https://github.com/siliviasilivia85-lang/lvji-career-kit 安装并启用这个 Skill，先陪我梳理一段经历。

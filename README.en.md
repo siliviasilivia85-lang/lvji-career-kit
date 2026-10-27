@@ -4,7 +4,6 @@
 
 **Make your Agent a personal career adviser, connecting past experience, today’s actions and future directions.**
 
-![LüJi: a concept illustration of an Agent connecting past experience, present actions and future directions](assets/readme-overview.png)
 
 ```text
 Install lvji-career-kit from https://github.com/siliviasilivia85-lang/lvji-career-kit and help me make sense of one past experience.

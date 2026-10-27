@@ -4,7 +4,6 @@
 
 **지금 쓰는 Agent를 과거 경험, 오늘의 행동, 미래 방향을 연결하는 나만의 커리어 조언자로 활용하세요.**
 
-![LüJi: Agent가 과거의 축적, 현재의 행동, 미래의 방향을 연결하는 개념 설명 그림](assets/readme-overview.png)
 
 ```text
 https://github.com/siliviasilivia85-lang/lvji-career-kit 에서 이 Skill을 설치하고 활성화한 뒤, 경험 하나를 함께 정리해 주세요.
