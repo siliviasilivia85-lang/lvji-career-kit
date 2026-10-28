@@ -13,25 +13,51 @@ Install lvji-career-kit from https://github.com/siliviasilivia85-lang/lvji-caree
 
 ## Why LüJi
 
-Many of us begin thinking seriously about our next role only when our current work no longer leaves room to grow.
+AI is making it easier to learn and put ideas into practice. There are new ways to find knowledge, use tools, and make things. We can try more than before, while skills that once belonged to separate roles increasingly overlap and combine. The boundaries of a career are changing with them.
 
-Then everything arrives at once: finding old projects, rewriting a résumé, choosing a direction, preparing for interviews. We have done and learned a great deal, but the records are scattered. It is hard to explain what that experience adds up to. Exploring several kinds of roles means preparing several different résumés, often before we have understood what we want from the next step.
+More choices do not necessarily bring a clearer direction. New tools and opportunities keep appearing, but our time is still limited. Which knowledge is worth learning, which projects are worth pursuing, and where past experience might prove useful are questions we gradually answer by trying.
 
-A résumé can change in a few days. Meaningful practice and transferable skills take longer. As AI changes the boundaries of work, career development needs a place in everyday life, well before an urgent job search.
+Looking for a job is only one point along that path. Working toward a promotion, taking on greater responsibility, or moving into a new field also calls for preparation. If we wait until a change is needed, there is little time left to learn, practise, and make mistakes. The faster technology changes, the more career development needs a place in our everyday work and lives.
 
-**LüJi helps you build a continuous path of career growth: recover what you have learned, bring future possibilities into present action, and carry the results into your next choice.**
+Granted, we have already grown used to bringing these questions to AI: a thought about changing direction, a setback at work, or a concern about the future. It can talk things through with us and help us analyse them. But when those thoughts remain scattered across conversations, the Agent often has only the part we happened to share at the time. Without concrete experience and outcomes to draw on, advice can stay general. Moving to another conversation or tool can mean explaining again where we left off and which judgments still need to be tested.
 
-It gives an Agent you already use a method, local file tools, and visual snapshots, so it can work with you as a personal career adviser. Your experience stays in readable files that you can inspect, correct, and keep.
+A job search brings more things to keep track of at once: different directions lead to different roles and companies, each application may use a different résumé, and there are interviews to prepare for, progress to follow, and feedback to record. A single conversation can help with one of these tasks. But without a shared place to keep materials, versions, and status, it is hard to see the whole picture or bring new feedback back into everyday learning and preparation.
 
-## Connect the past, present, and future
+LüJi brings a career development method, a folder structure for your materials, and local file tools together in a Skill for the Agent you already use. Start with your experience and abilities, discuss possible directions together, work out the knowledge and practice a goal calls for, and fit that preparation into the time you can spare each day. Project outcomes, learning records, and real feedback are checked with you before they are saved, so later conversations can find, refer to, and revise them.
 
-**Past — understand the ground you stand on.** Preserve work, projects, education, and learning in small, named records. Keep original materials and their sources, add forgotten details, and revisit what your experience suggests about your strengths and preferences. Your next direction may also depart from your past.
+As those records accumulate, the Agent can draw on the same body of material to understand your experience, preferences, and practical constraints in more detail. The discussion results, decisions, and progress you choose to save help it recover where you left off and what to do next. You can inspect, add to, and correct its understanding of you. A personal career adviser takes shape through these continuing conversations, practical efforts, and records.
 
-**Present — give growth a place in a real week.** Start with what you want to do and the time you can actually spare. Break a project into useful outcomes and manageable actions. Daily, weekly, monthly, and yearly plans refer to the same actions. When life changes, adjust the relevant commitment rather than rebuilding everything.
+![LüJi’s career development framework, connecting past experience, present action, and future directions](assets/career-overview.svg)
 
-**Future — let several possibilities share the same growing experience.** Compare directions and specific opportunities, see what is supported by evidence and what remains unknown, and turn worthwhile gaps into present work. When you decide to apply, reuse your experience and confirmed outcomes to prepare role-specific or company-specific résumés and interview materials. Bring actual feedback back into your next decisions.
+## How LüJi works
 
-Completing a task records progress. A concrete result, checked with you, can support a claim about your abilities. Keeping that distinction makes this path useful over time. You can explore without creating a goal, save an idea without starting a project, and close a stage without committing to another one.
+### Past: organize your experience and preserve its evidence
+
+Give the Agent earlier résumés, work and project materials, learning notes, education records, or awards—or place them directly in your workspace’s material folders. The Agent organizes them by topic, keeps the originals and their sources, and draws out specific experiences. You can add missing details and correct its understanding at any time.
+
+Past plans, work actually completed, and confirmed outcomes are recorded separately. When you want to understand your strengths or abilities, the Agent draws on the actual materials to offer an interpretation for you to review and revise. That interpretation can change as you gain new experience.
+
+### Present: bring goals into everyday work and learning
+
+Start with your current work, a project you want to pursue, or a direction you have not yet thought through. The Agent considers your experience, current progress, the goal’s requirements, and the time you can give it. Together, you identify useful knowledge and practical work, then break them into concrete projects, milestones, and daily, weekly, and monthly actions.
+
+Add learning progress, work outcomes, and feedback as they happen. Reviewing a plan builds on the existing arrangements; a small adjustment changes only the relevant items. If time becomes scarce, a goal changes, or progress stalls, decide together whether to reduce the scope, postpone, pause, or continue. You can begin without a complete record of your past.
+
+### Future: explore directions and prepare for career changes
+
+You may want to work toward a promotion, take on new responsibilities, move into another role, or try a project of your own. Save the direction and the thinking behind it. You do not need an existing job description to discuss a goal. When a specific role becomes relevant, gather its requirements, compare directions and companies, and connect them with your past experience and current progress to identify supporting evidence, gaps, and open questions.
+
+When you do begin a job search, you can keep drawing on the same accumulated work:
+
+- **Résumés:** Select relevant experience and confirmed outcomes for a role or company, then generate an independently saved HTML résumé version. Choose from six layouts, with your selected photograph or no photograph. After you review and approve that exact HTML version, use an already installed Chrome/Chromium to export the same version as a PDF.
+- **Interview preparation:** Organize project stories, role-specific questions, and talking points. Prepare materials for each company and interview round, practise question by question, and save reflections after actual interviews.
+- **Application tracking:** For each role at a company, record actual application stages, the exact résumé version used, feedback, and next steps. Review all opportunities or focus on a single role or opportunity. Real feedback can return to the present as suggestions for further practice and action.
+
+### Keep going: pick up where the last conversation left off
+
+Experience, actions, plans, and outcomes live in readable local files, with separate maps for you and your Agent. You can add new materials directly to the folders. When handling a related request, the Agent checks for changes and reads what it needs. Important additions become concrete drafts for you to review before they are saved as formal records.
+
+In a new conversation, the Agent uses saved item summaries to recover the goal, where you stopped, and the next step. Its understanding comes from the experience, outcomes, and discussion results you choose to save; unsaved chats are not treated as long-term memory. You can check sources, edit records, and correct how it understands you.
 
 ## Start with one piece of experience
 

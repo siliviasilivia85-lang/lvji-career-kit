@@ -20,8 +20,8 @@
     {
       "path": "ASSETS.md",
       "source": "luji-career-kit/ASSETS.md",
-      "sha256": "ae1a24647dc98aa9bbca57928f0cd9454bbe40841c1ab717676628e2150556ff",
-      "bytes": 4336
+      "sha256": "ba7503b3904e54373bf41200a454f7f8d963c169f70b53596c9e0642471c0654",
+      "bytes": 4906
     },
     {
       "path": "LICENSE",
@@ -32,32 +32,32 @@
     {
       "path": "README.en.md",
       "source": "luji-career-kit/README.en.md",
-      "sha256": "6e3246140927998dbc09741a92ca0899ac9ea44957d0063045baf7a4aa36aa6a",
-      "bytes": 14845
+      "sha256": "0668944e92e16c0b923d316fc955e478a4dcfced1e8e88f069b2d3e9f8a421b3",
+      "bytes": 19161
     },
     {
       "path": "README.es.md",
       "source": "luji-career-kit/README.es.md",
-      "sha256": "de657be04945757a8a79d05e7697dbcfa76a17f98d066950eacf8bfcc8e607fb",
-      "bytes": 21562
+      "sha256": "3a85e94e2c1ce7b678bfeb7bb2b61c7ffab58cb6d046b149dbd63de87ac562df",
+      "bytes": 25222
     },
     {
       "path": "README.ja.md",
       "source": "luji-career-kit/README.ja.md",
-      "sha256": "d5b388b0b3017adf603f2a19b20953e07063536e613d11d52d74890a4bbb5fe2",
-      "bytes": 23970
+      "sha256": "03bcb274a3888760781f5461995bd5ea854688930b353237631675acff2cc1dd",
+      "bytes": 28171
     },
     {
       "path": "README.ko.md",
       "source": "luji-career-kit/README.ko.md",
-      "sha256": "c30b5bcfaf1786f4b42a38efd9fc95e700de80374d363e98f856c7a6e0eb0609",
-      "bytes": 23312
+      "sha256": "3b2d41b59070113b7584dda89a5c4e70e6993a913c5a8f410269ab3f4095a1a8",
+      "bytes": 26626
     },
     {
       "path": "README.md",
       "source": "luji-career-kit/README.md",
-      "sha256": "a9731f367af1df61789fa44bad9cacc2931e25b8793cb2b7ed74e4968b2d3080",
-      "bytes": 16401
+      "sha256": "df32688fb3d311d7710f327b1b7cf799d0998121f7f08b28943ffd7e5200cbfd",
+      "bytes": 18626
     },
     {
       "path": "SKILL.md",
@@ -76,6 +76,18 @@
       "source": "luji-career-kit/agents/openai.yaml",
       "sha256": "4a122623c876eccb8a451a2fa7e1496edf5362b2efdc8fa4a126a1d41c6b7448",
       "bytes": 281
+    },
+    {
+      "path": "assets/career-overview.prompt.md",
+      "source": "luji-career-kit/assets/career-overview.prompt.md",
+      "sha256": "9943a0efcd042c3524e7334344d3f6c72a5ba6657f667815228acdee2ea5c954",
+      "bytes": 6635
+    },
+    {
+      "path": "assets/career-overview.svg",
+      "source": "luji-career-kit/assets/career-overview.svg",
+      "sha256": "449a46a4f07cc2b146f0c49b1ced7d07fdb02bdcbb469aa48f101a0049f2bb8b",
+      "bytes": 2835411
     },
     {
       "path": "assets/demo-avatar-b.png",
@@ -422,6 +434,5 @@
     "old application",
     "model service",
     "build caches"
-  ],
-  "repository": "https://github.com/siliviasilivia85-lang/lvji-career-kit"
+  ]
 }

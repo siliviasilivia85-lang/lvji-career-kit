@@ -24,6 +24,7 @@ Python只使用标准库。页面无远程字体或CDN，样式画廊使用下�
 ## README与公开演示
 
 - 五语言README为项目自写说明的译文，沿用MIT。未翻译并冒称已实现的功能，运行时指南仍仅支持中文/英文。
+- `assets/career-overview.svg`为职业发展框架概念图，不是实际界面截图。内置image_gen生成原创拼贴并按用户要求移除人手，项目以真实系统字体独立排版和精简关键词；2400×1600 SVG内嵌原生1536×1024 PNG，无外部图片/脚本依赖，不分发字体。虚构人物不对应使用者或真实职业资料。说明、参考与完整提示词见[图像来源](assets/career-overview.prompt.md)。图中文字为中文，五语言README另有本地化alt和功能正文。生成图与原创排版按本包MIT发布。
 - `scripts/demo_site.py`、`assets/demo_intro.html`与配套测试为原创。它们只从固定虚构输入生成只读站点；不调用模型、账户或个人工作区。页面、头像和简历均由自有代码/上述生成头像派生，不复制真实Agent界面、个人聊天或外部项目截图。
 - `.github/workflows/pages.yml`只引用GitHub官方Actions来构建和发布专用演示目录，需维护者手动触发；各Action适用其自身许可证，本包未复制Action源码。来源：[GitHub Pages工作流](https://docs.github.com/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
 - `skills`是可选安装渠道，不是Skill运行依赖，未捆绑其代码；命令及来源见[安装说明](references/install.md)。

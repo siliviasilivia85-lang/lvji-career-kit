@@ -13,35 +13,51 @@ Instala lvji-career-kit desde https://github.com/siliviasilivia85-lang/lvji-care
 
 ## Por qué LüJi
 
-Muchas veces empezamos a pensar en serio en nuestro siguiente paso profesional cuando el trabajo actual ya no nos deja espacio para crecer.
+La IA está facilitando el aprendizaje y la práctica. Hay nuevas formas de adquirir conocimientos, utilizar herramientas y crear proyectos propios. Una persona puede probar más cosas, y las capacidades que antes pertenecían a distintos puestos empiezan a cruzarse y combinarse. Los límites entre profesiones también están cambiando.
 
-Entonces todo llega a la vez: recuperar proyectos antiguos, rehacer el currículum, elegir un rumbo y preparar entrevistas. Hemos trabajado y aprendido mucho, pero los registros están dispersos y cuesta explicar qué hemos construido con esa experiencia. Si queremos explorar varios tipos de puesto, necesitamos además distintas versiones del currículum. Es fácil acabar buscando empleo por la urgencia de cambiar, antes de haber comprendido hacia dónde queremos ir.
+Pero tener más opciones no significa tener un rumbo más claro. Surgen nuevas herramientas y oportunidades, mientras nuestro tiempo sigue siendo limitado. Qué merece la pena aprender, qué proyectos conviene emprender y dónde puede servirnos la experiencia anterior son preguntas que vamos aclarando al probar.
 
-Un currículum puede cambiar en unos días. Una práctica sólida y una capacidad que podamos llevar a otro contexto necesitan más tiempo. A medida que la IA transforma los límites y las exigencias del trabajo, el desarrollo profesional necesita un lugar en nuestra vida cotidiana, mucho antes de una búsqueda urgente de empleo.
+Buscar empleo es solo un momento de ese proceso. Aspirar a un ascenso, asumir mayores responsabilidades o entrar en un campo nuevo también requieren preparación. Si solo empezamos cuando necesitamos un cambio, queda poco tiempo para aprender, practicar y equivocarnos. Cuanto más rápido avanza la tecnología, más necesario resulta dar al desarrollo profesional un lugar en el trabajo y la vida cotidiana.
 
-**LüJi te ayuda a construir una trayectoria de crecimiento con continuidad: recuperar lo aprendido, dar a tus posibilidades futuras un lugar en las acciones de hoy y llevar sus resultados a tu próxima decisión.**
+Es cierto que ya nos hemos acostumbrado a llevar estas preguntas a la IA: la idea de cambiar de rumbo, un revés en el trabajo o una preocupación por el futuro. Puede escucharnos y ayudarnos a analizar la situación. Pero si esas ideas solo quedan en conversaciones dispersas, el agente a menudo dispone únicamente de lo que contamos en ese momento. Sin experiencias y resultados concretos como referencia, los consejos pueden quedarse en un análisis general. Al cambiar de conversación o de herramienta, también suele hacer falta volver a explicar dónde nos quedamos y qué conclusiones siguen pendientes de comprobar.
 
-Ofrece al agente que ya utilizas un método, herramientas para archivos locales y vistas de tus registros, para que pueda acompañarte como asesor de desarrollo profesional. La experiencia queda en archivos legibles que puedes revisar, corregir y conservar. Con el tiempo, la preparación deja de ser una serie de esfuerzos aislados y se convierte en un proceso que puedes retomar y hacer crecer.
+Durante la búsqueda de empleo hay aún más cosas que atender: varios rumbos llevan a distintos puestos y empresas, cada candidatura puede utilizar una versión diferente del currículum, y además hay que preparar entrevistas, seguir los avances y registrar los comentarios recibidos. Una conversación puede ayudar con una de esas tareas, pero si los materiales, las versiones y los estados no se conservan de forma organizada, cuesta tener una visión de conjunto y llevar lo aprendido de vuelta al aprendizaje y la preparación cotidianos.
 
-## Conectar el pasado, el presente y el futuro
+LüJi reúne un método de desarrollo profesional, una estructura de carpetas para tus materiales y herramientas de archivos en un Skill que puedes utilizar con tu agente habitual. Puedes partir de tu experiencia y tus capacidades, explorar rumbos junto a él, desglosar los conocimientos y la práctica que requieren tus objetivos y hacerles sitio en el tiempo disponible cada día. Los resultados de tus proyectos, los registros de aprendizaje y los comentarios reales que hayas revisado se guardan para poder encontrarlos, citarlos y corregirlos en conversaciones posteriores.
 
-### Pasado: reconocer lo que has construido
+A medida que se acumulan los registros, el agente puede apoyarse en esos mismos materiales para comprender mejor tu experiencia, tus preferencias y tus limitaciones reales. Las conclusiones de las conversaciones, las decisiones y los avances que eliges guardar le ayudan a recuperar dónde te quedaste y qué hacer después. También puedes consultar, completar y corregir su interpretación de ti. Tu asesor personal de desarrollo profesional va tomando forma a través de estas conversaciones, prácticas y registros continuados.
 
-El trabajo, los proyectos, los estudios y los aprendizajes merecen conservarse y revisitarse. LüJi los organiza en registros pequeños y con nombre propio, mantiene los originales y sus fuentes, y permite añadir detalles que habías olvidado. A partir de ellos, el agente puede ayudarte a reconocer experiencia, preferencias y capacidades transferibles. También puedes elegir un camino que se aleje de lo que has hecho hasta ahora.
+![LüJi: un marco de desarrollo profesional que conecta pasado, presente y futuro](assets/career-overview.svg)
 
-### Presente: dar al crecimiento un lugar en una semana real
+## Cómo funciona LüJi
 
-Seguir creciendo tiene que ser compatible con la vida que ya tienes: hay trabajo pendiente, el tiempo disponible es limitado y surgen imprevistos. LüJi parte de tus circunstancias y del tiempo que realmente puedes dedicar, y convierte ideas en proyectos, resultados intermedios y acciones diarias, semanales y mensuales. Cuando algo no avanza, puedes reducir el siguiente paso, cambiar el ritmo y decidir qué merece continuar.
+### Pasado: ordenar tu experiencia y conservar sus fuentes
 
-### Futuro: dejar que varios rumbos compartan la misma experiencia
+Entrega al agente tus currículums anteriores, materiales de trabajo y proyectos, notas de aprendizaje, estudios y premios, o colócalos directamente en las carpetas de entrada del espacio de trabajo. El agente los organiza por temas, conserva los originales y sus fuentes, y extrae experiencias concretas. Puedes añadir lo que falte y corregir su interpretación en cualquier momento.
 
-Puedes tener más de un objetivo profesional. Muchas de las capacidades que requieren se solapan: un proyecto, un aprendizaje o una práctica de trabajo pueden prepararte para distintas posibilidades. LüJi ayuda a ver esas conexiones y a traducir lo que pide cada objetivo en capacidades y acciones presentes, sin empezar desde cero para cada puesto.
+Los planes anteriores, lo que realmente hiciste y los resultados que ya se han confirmado se registran por separado. Cuando quieras explorar tus características o capacidades, el agente propone una interpretación basada en los materiales disponibles para que la revises y ajustes. Esa interpretación también puede cambiar con nuevas experiencias.
 
-Cuando decidas buscar empleo, podrás seleccionar lo más relevante de tu experiencia y tus resultados, preparar currículums para distintos puestos o empresas, ensayar entrevistas y registrar candidaturas, conversaciones y comentarios recibidos. Esa información vuelve al presente para ayudarte a revisar tus decisiones y ajustar lo que haces después.
+### Presente: llevar los objetivos al trabajo y al aprendizaje diarios
 
-La continuidad también necesita evidencias reales. Terminar una tarea registra un avance; un trabajo concreto o un resultado, revisado contigo, puede respaldar una afirmación sobre tus capacidades. Las actividades y los resultados confirmados siguen disponibles para la planificación, el currículum y las entrevistas. **Cada práctica deja algo que conservar; cada decisión puede traer una nueva comprensión de tu recorrido.**
+Puedes empezar por tu trabajo actual, un proyecto que te gustaría emprender o una idea que aún no tienes clara. El agente considera tu experiencia, los avances actuales, lo que requieren tus objetivos y el tiempo que puedes dedicar. Te ayuda a identificar conocimientos y prácticas útiles, y a concretarlos en proyectos, resultados intermedios y acciones diarias, semanales y mensuales.
 
-Las conexiones se construyen poco a poco y los objetivos pueden cambiar con la experiencia. Los cambios importantes se presentan primero como un borrador concreto para que lo revises y decidas si guardarlo. Puedes explorar sin crear un objetivo, conservar una idea sin iniciar un proyecto y cerrar una etapa sin comprometerte todavía con la siguiente.
+Puedes ir añadiendo avances de aprendizaje, resultados de trabajo y comentarios recibidos. Al consultar el plan, se mantienen los acuerdos existentes; si necesitas un ajuste, solo se modifica lo relacionado. Si falta tiempo, cambian tus objetivos o algo no avanza, decidís juntos qué reducir, aplazar, pausar o continuar. No necesitas tener completo tu archivo de experiencias anteriores para empezar.
+
+### Futuro: explorar rumbos y prepararte para los cambios profesionales
+
+Si quieres aspirar a un ascenso, asumir nuevas responsabilidades, cambiar de puesto o probar un proyecto propio, puedes empezar por guardar ese rumbo y tus motivos de entonces. No hace falta contar con una descripción de puesto (JD) para hablar de un objetivo. Cuando haya puestos concretos, podrás recopilar sus requisitos, comparar rumbos y empresas, y relacionarlos con tu experiencia y tus avances actuales para reconocer qué los respalda, qué falta y qué necesitas averiguar.
+
+Cuando llegue el momento de buscar empleo, podrás seguir utilizando esa misma experiencia acumulada:
+
+- **Currículums**: selecciona las experiencias relevantes y los resultados confirmados para cada puesto y empresa, y genera un currículum web que se conserva como versión independiente. Hay seis diseños; puedes utilizar la fotografía que elijas o prescindir de ella. Después de revisar la versión web exacta, podrás exportar esa misma versión a PDF con Chrome/Chromium, si ya está instalado.
+- **Preparación de entrevistas**: organiza relatos de proyectos, preguntas relacionadas con el puesto y esquemas para explicar tu experiencia. Prepara materiales por empresa y ronda, practica pregunta a pregunta y conserva una revisión después de cada entrevista real.
+- **Seguimiento de oportunidades**: registra la etapa de cada candidatura, la versión del currículum que utilizaste, los comentarios recibidos y el siguiente paso, por empresa y puesto. Puedes consultar el progreso completo o centrarte en un puesto o una oportunidad. Los comentarios reales también pueden volver al presente y dar lugar a nuevas propuestas de práctica y acción.
+
+### Uso continuado: retomar el hilo de cada conversación
+
+Tus experiencias, acciones, planes y resultados se guardan en archivos locales legibles. Tú y el agente tenéis vuestros propios mapas de materiales. Puedes colocar nuevos archivos directamente en las carpetas: cuando el agente aborde una cuestión relacionada, comprobará los cambios y leerá solo lo necesario. La información importante se presenta primero como un borrador concreto y se guarda después de que lo apruebes.
+
+En una conversación nueva, el agente recupera el objetivo, el punto donde te quedaste y el siguiente paso a partir de los resúmenes guardados de cada proyecto o asunto. Lo que sabe de ti procede de las experiencias, los resultados y las conclusiones que eliges conservar; una conversación sin guardar no se trata como memoria a largo plazo. Puedes comprobar las fuentes, modificar los registros y corregir su interpretación de ti.
 
 ## Primeros pasos: empieza por una experiencia
 
